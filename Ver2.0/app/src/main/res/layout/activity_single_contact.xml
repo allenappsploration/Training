@@ -1,86 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
+    android:orientation="vertical">
 
-    <!-- Name Label -->
-    <TextView
-        android:id="@+id/itm1_label"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10dip"
-        android:paddingTop="10dip"
-        android:textColor="#43bd00"
-        android:textSize="25dip"
-        android:textStyle="bold" />
-    <!-- Email Label -->
-    <TextView
-        android:id="@+id/itm2_label"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#acacac" />
-    <!-- Mobile Label -->
-    <TextView
-        android:id="@+id/itm3_label"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/itm4_label"
+    <WebView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/itm5_label"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/itm6_label"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/itm7_label"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/itm8_label"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/itm9_label"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/itm10_label"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/itm11_label"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/itm12_label"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:id="@+id/webView" />
 
 </LinearLayout>

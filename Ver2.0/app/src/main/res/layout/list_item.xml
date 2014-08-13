@@ -1,56 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="10dp"
     android:paddingLeft="10dp"
     android:paddingRight="10dp">
 
     <!-- Name Label -->
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/imageView"
-        android:padding="10dp"
-        android:layout_weight="1"
-        android:layout_gravity="left"/>
-
-    <TextView
-        android:id="@+id/itm1"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="2dip"
-        android:paddingTop="6dip"
-        android:textColor="#000fff"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_gravity="right"
-        android:gravity="right"
-        android:layout_weight="1"/>
+        android:orientation="horizontal">
 
-    <!-- Email label -->
-    <TextView
-        android:id="@+id/itm2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="2dip"
-        android:textColor="#acacac"
-        android:layout_gravity="right"
-        android:gravity="right"
-        android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:padding="10dp" />
 
-    <!-- Mobile number label -->
-    <TextView
-        android:id="@+id/itm3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#5d5d5d"
-        android:textStyle="bold"
-        android:layout_gravity="right"
-        android:gravity="right"
-        android:layout_weight="1"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/imageView">
+
+            <TextView
+                android:id="@+id/itm1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="2dip"
+                android:paddingTop="6dip"
+                android:textColor="#000fff"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Email label -->
+            <TextView
+                android:id="@+id/itm2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="2dip"
+                android:textColor="#acacac" />
+
+            <!-- Mobile number label -->
+            <TextView
+                android:id="@+id/itm3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="2dip"
+                android:textColor="#5d5d5d"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/hiditem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
 
 </LinearLayout>
