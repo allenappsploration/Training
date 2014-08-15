@@ -1,6 +1,8 @@
 package com.example.appsplorationdev.ver30;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -137,5 +139,26 @@ public class MainActivity extends KeyConfiguration {
             ListView lv = (ListView) findViewById(R.id.list);
             lv.setAdapter(adapter);
         }
+    }
+
+    public void onBackPressed(){
+        new AlertDialog.Builder(this)
+                //.setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Exit Publisher App")
+                .setMessage("Are you sure you want to close Publisher App?")
+                .setPositiveButton("Yes",
+                        new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(Intent.ACTION_MAIN);
+                        intent.addCategory(Intent.CATEGORY_HOME);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    }
+
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
 }

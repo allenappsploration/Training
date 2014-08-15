@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ShareActionProvider;
 
 /**
@@ -29,14 +31,40 @@ public class SingleContactActivity extends KeyConfiguration {
 
         // Displaying all values on the screen
         wvP1 = (WebView) findViewById(R.id.webView);
-        wvP1.getSettings().setJavaScriptEnabled(true);
-        wvP1.loadUrl(p2);
 
+        wvP1.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+        wvP1.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        wvP1.getSettings().getLoadsImagesAutomatically();
+        //wvP1.getSettings().setSupportZoom(true);
+        //wvP1.getSettings().setBuiltInZoomControls(true);
+        wvP1.setScrollBarStyle(WebView.SCROLLBARS_INSIDE_INSET);
+        wvP1.setScrollbarFadingEnabled(true);
+        wvP1.getSettings().setLoadsImagesAutomatically(true);
+
+        wvP1.setWebViewClient(new WebViewClient());
+        wvP1.getSettings().setJavaScriptEnabled(true);
+
+        if (savedInstanceState == null) {
+            wvP1.loadUrl(p2);
+        }
 
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+    }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState )
+    {
+        super.onSaveInstanceState(outState);
+        wvP1.saveState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState)
+    {
+        super.onRestoreInstanceState(savedInstanceState);
+        wvP1.restoreState(savedInstanceState);
     }
 
     public boolean onCreateOptionsMenu (Menu menu) {
@@ -60,10 +88,35 @@ public class SingleContactActivity extends KeyConfiguration {
         }
     }
 
-    public boolean onOptionsItemSelected(MenuItem item){
-        Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivityForResult(myIntent, 0);
-        return true;
+    public boolean onOptionsItemSelected(MenuItem item) {
 
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivityForResult(myIntent, 0);
+                return true;
+
+            case R.id.menu_item_share:
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                //shareIntent.putExtra(Intent.EXTRA_SUBJECT, shareIntent);
+                // getting intent data
+                Intent in = getIntent();
+
+                // Get JSON values from previous intent
+                String link = in.getStringExtra(KEY_LINK);
+                shareIntent.putExtra(Intent.EXTRA_TEXT, link);
+                //startActivity(shareIntent);
+                startActivity(Intent.createChooser(shareIntent, "Share Via"));
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
+/*
+    public void showPopUp(View v){
+        PopupMenu popup = new PopupMenu(this, v);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.main, popup.getMenu());
+        popup.show();
+    }*/
 }
