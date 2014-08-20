@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Ver3.0</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="social_array">
+        <item>Facebook</item>
+        <item>Twitter</item>
+        <item>Google +</item>
+        <item>E-Mail</item>
+    </string-array>
+</resources>
