@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>U-Mobile</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0">
+<script>
+window.innityapps_bannerFormat = 3;
+window.innityapps_adWidth = 320;
+window.innityapps_adHeight = 568;
+window.innityapps_setBannerWidth= function(width) {
+window.innityapps_adWidth=width;
+document.getElementById('invitationContents').style.position = 'absolute';
+document.getElementById('invitationContents').style.left = ((window.innityapps_adWidth - 320) / 2) + 'px';
+document.getElementById('bannerOffset').style.position = 'absolute';
+document.getElementById('bannerOffset').style.left = ((window.innityapps_adWidth - 320) / 2) + 'px';
+document.getElementById('invitation').style.width = width+'px';
+document.getElementById('banner').style.width = width+'px';
+//if(height<568){document.getElementById('bannerOffset').style.marginTop = '-'+((568-height)/2)+'px';}
+}
+window.innityapps_setBannerHeight= function(height) {
+window.innityapps_adHeight=height;
+if(height>568)
+{
+document.getElementById('bannerOffset').style.position = 'absolute';
+document.getElementById('bannerOffset').style.top = ((height-568)/2)+'px';
+}
+document.getElementById('banner').style.height = height+'px';
+if(height<568)
+{
+document.getElementById('bannerOffset').style.marginTop = '-'+((568-height)/2)+'px';
+}
+}
+window.innityapps_adDidExpand = function() {
+document.getElementById('invitation').style.display = 'none';
+loadBannerContent();
+};
+window.innityapps_adWillCloseExpanded = function() {
+document.getElementById('invitation').style.display = 'block';
+};
+</script>
+<script src="mobile_android.js"></script>
+
+<link rel="stylesheet" href="style.css">
+<style>
+body{margin:0px;padding:0px;}
+#invitationBG{background-color:black; opacity:0.5; z-index:-100; position:absolute; display:block; width:100%; height:100%}
+#invitation{width:320px;height:50px;position:absolute;left:0px;top:568px;z-index:1}
+#bannerBG{background-color:black; opacity:0.8; z-index:-100; position:absolute; display:block; width:100%; height:100%}
+#banner{width:320px;height:568px;overflow-y:hidden;position:absolute;left:0px;top:568px;}
+#bannerOffset{width:320px;height:568px;overflow:hidden;z-index:2}
+.error-msg{color:red;}
+</style>
+</head>
+<body>
+<div id="invitation">
+<div id="invitationBG"></div>
+<div id="invitationContents">
+<img alt="up" src="invitation_ad.png" width="320" height="50">
+</div>
+</div>
+<div id="banner">
+<div id="bannerBG"></div>
+<div id="bannerOffset">
+<div class="banner"><img src="banner.jpg" alt="Banner" /></div>
+<div class="menu">
+	<div class="arrow-reg"><img src="arrow-down.png" alt="Arrow" /></div>
+	<ul>
+		<li class="menu-register"><div id="tab-register" class="menu-to-tap selected"></div></li>
+		<li class="menu-match"><div id="tab-match" class="menu-to-tap"></div></li>
+	</ul>
+</div>
+<div id="banner-content">
+	<div id="register-banner-content"></div>
+	<div id="match-banner-content" style="display: none;" class="match-wrap"></div>
+</div>
+</div>
+</div>
+<div id="hidden-div" style="display: none;"></div>
+<script>
+var registerBanner;
+var matchBanner;
+
+function loadBannerContent() {
+registerBanner = document.getElementById('register-banner-content');
+matchBanner = document.getElementById('match-banner-content');
+
+_loadRegister();
+_loadMatch();
+
+initAllFunction();
+
+function _loadRegister() {
+registerBanner.innerHTML = '' +
+'<div>' +
+	'<div class="form-wrap">' +
+		'' +
+		'<table width="100%" border="0" cellspacing="0" cellpadding="2">' +
+			'<tr><td>*Name <span id="error-name" class="error-msg"></span></td></tr>' +
+			'<tr>' +
+				'<td><input name="name" type="text" id="name" class="txt-field" value="" /></td>' +
+			'</tr>' +
+			'<tr><td>*IC/Passport No</td></tr>' +
+			'<tr>' +
+				'<td><input name="ic_passport" type="text" id="ic_passport" class="txt-field" value="880229156547" /></td>' +
+			'</tr>' +
+			'<tr><td>*U Mobile Number <span id="error-mobile" class="error-msg"></span></td></tr>' +
+			'<tr>' +
+				'<td><input name="mobile" type="text" id="mobile" class="txt-field" value="" /></td>' +
+			'</tr>' +
+			'<tr><td>*Email</td></tr>' +
+			'<tr>' +
+				'<td><input name="email" type="text" id="email" class="txt-field" value="iLoveUM@email.com" /></td>' +
+			'</tr>' +
+		'</table>' +
+	'</div>' +
+	'<div class="btn-tq"><div id="submit-form" href="#"><img src="btn-submit.jpg" alt="Thanks"/></div></div>' +
+'</div>';
+};
+
+function _loadMatch() {
+matchBanner.innerHTML =
+	'<img id="match-list" src="match.png" alt="Match" />' +
+	'<div id="match-collapsed" style="position: absolute; width: 300px; height: 41px; left: 10px; top: 15px;"></div>' +
+	'<img id="match-detail" style="display: none;" src="match-expand.png" alt="Match Detail"/>' +
+	'<div id="match-expanded" style="display: none; position: absolute; width: 300px; height: 100px; left: 10px; top: 15px;"></div>' +
+	'<div id="add-calender" style="display: none; position: absolute; width: 300px; height: 37px; left: 10px; top: 115px;"></div>';
+};
+};
+
+function initAllFunction() {
+bindMenu();
+bindSubmit();
+bindMatch();
+};
+
+function bindMenu() {
+var menus = document.getElementsByClassName('menu-to-tap');
+for(var i = 0; i < menus.length; i++) {
+menus[i].addEventListener('touchend', swapMenu, false);
+}
+};
+
+function swapMenu(e) {
+e.preventDefault();
+var activeMenus = document.getElementsByClassName('selected');
+for(var i = 0; i < activeMenus.length; i++) {
+activeMenus[i].classList.remove('selected');
+}
+this.classList.add('selected');
+
+if(this.id === 'tab-register') {
+registerBanner.style.display = '';
+matchBanner.style.display = 'none';
+}
+else {
+registerBanner.style.display = 'none';
+matchBanner.style.display = '';
+}
+};
+
+function bindSubmit() {
+document.getElementById('submit-form').addEventListener('touchend', _submitRegistration, false);
+
+function _submitRegistration() {
+var isValid = true;
+var name = document.getElementById('name').value;
+var mobile = document.getElementById('mobile').value;
+
+document.getElementById('error-name').innerHTML = '';
+if(name.length === 0) {
+	document.getElementById('error-name').innerHTML = 'Enter Your Name!';
+	isValid = false;
+}
+
+var mobileValidator = /^\d{10,13}$/;
+document.getElementById('error-mobile').innerHTML = '';
+if(mobile.length === 0) {
+	document.getElementById('error-mobile').innerHTML = 'Enter Your Mobile Number!';
+	isValid = false;
+}
+
+if(!mobile.match(mobileValidator)) {
+	document.getElementById('error-mobile').innerHTML = 'Enter Valid Mobile Number!';
+	isValid = false;
+}
+
+if(isValid === true) {
+	registerBanner.innerHTML = '<div style="padding:15px; text-align:center;"><img src="txt-thankyou.png" alt="Thank You" /></div>';
+	document.getElementById('banner').scrollIntoView();
+
+	var msg = encodeURIComponent('Hi '+name+', \nThank you for joining the "Road To Cardiff" contest!\nThis is your One-Time PIN: Y7P8QW\nLogin to www.roadtocardiff.com to activate.');
+
+	var imgEl = document.createElement('img');
+	imgEl.src = 'http://api.clickatell.com/http/sendmsg?api_id=3458249&user=appsploration&password=OTHHdIfdOOIKBQ&to='+mobile+'&text='+msg;
+	imgEl.setAttribute('width', 0);
+	imgEl.setAttribute('height', 0);
+	document.getElementById('hidden-div').appendChild(imgEl);
+}
+};
+};
+
+function bindMatch() {
+document.getElementById('match-collapsed').addEventListener('touchend', _showMatchDetail, false);
+document.getElementById('match-expanded').addEventListener('touchend', _hideMatchDetail, false);
+document.getElementById('add-calender').addEventListener('touchend', _addToCalender, false);
+
+function _showMatchDetail() {
+document.getElementById('match-list').style.display = 'none';
+document.getElementById('match-collapsed').style.display = 'none';
+document.getElementById('match-detail').style.display = '';
+document.getElementById('match-expanded').style.display = '';
+document.getElementById('add-calender').style.display = '';
+};
+
+function _hideMatchDetail() {
+document.getElementById('match-list').style.display = '';
+document.getElementById('match-collapsed').style.display = '';
+document.getElementById('match-detail').style.display = 'none';
+document.getElementById('match-expanded').style.display = 'none';
+document.getElementById('add-calender').style.display = 'none';
+};
+
+function _addToCalender() {
+window.innityapps_execCommand('createCalendarEvent?description=Arsenal%20v%20Cardiff&location=Emirates%20Stadium&start=2014-01-01T15:00:00+0800&end=2014-01-01T20:00:00+0800');
+};
+};
+</script>
+</body>
+</html>
