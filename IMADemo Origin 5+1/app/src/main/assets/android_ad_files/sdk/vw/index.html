@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Volkswagen</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+
+<script>
+window.innityapps_bannerFormat = 1;
+window.innityapps_adHeight = 568;
+window.innityapps_setBannerHeight= function(height) {
+window.innityapps_adHeight=height; document.getElementById('banner').style.height = height+'px'; if(height<568){document.getElementById('bannerOffset').style.marginTop = '-'+((568-height)/2)+'px';}
+}
+window.innityapps_adDidExpand = function() {
+document.getElementById('invitation').style.display = 'none';
+callbackWhenBannerFullyShown();
+};
+window.innityapps_adWillCloseExpanded = function() {
+document.getElementById('invitation').style.display = 'block';
+};
+</script>
+<script src="http://i.appsploration.com/apps/mobile.js"></script>
+
+<style>
+body{margin:0px;padding:0px;}
+#invitation{width:320px;height:50px;position:absolute;left:0px;top:568px;}
+#banner{width:320px;height:568px;overflow-y:hidden;position:absolute;left:0px;top:568px;}
+#bannerOffset{width:320px;height:568px;overflow:hidden}
+.error-msg{color:red;}
+</style>
+<script type="text/javascript" src="http://cdn.media.innity.net/lib/html5.js"></script>
+<script type="text/javascript" src="RequestAnimationFrame.js"></script>
+
+<style>
+* {padding:0; margin:0;}
+</style>
+</head>
+
+<body>
+<div id="invitation">
+<div id="invitation-ad" style="position: absolute; bottom: 0px; width: 100%; height: 50px; background-color: rgba(0, 0, 0, 0.3); -moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none;">
+<div style="width: 320px; height: 50px; margin: 0 auto; position: relative; overflow: hidden;">
+<img id="inv-text" alt="Invitation Text" style="position:absolute; z-index:2; left: -99px; top: 34px;" src="vw_invitaion_txt2.png" width="99" height="13" />
+<img id="inv-car" alt="Invitation Car" style="position:absolute; z-index:2; left: 0px; top: 10px;" src="vw_invitaion_car.png" width="98" height="38" />
+<img id="inv-logo" alt="Invitation Logo" style="position:absolute; z-index:2; left: 278px; top: 50px;" src="vw_invitaion_logo.png" width="21" height="22" />
+<img id="inv-btn" alt="Invitation Button" style="position:absolute; z-index:2; left: 6px; top: 50px;" src="vw_invitaion_btn.png" width="113" height="50" />
+<img alt="Invitation Background" style="position:absolute;z-index:1;"  src="vw_invitaion.jpg" width="320" height="50" />
+<div id="education-content" style="position: absolute; top: -28px; left: 146px; display: none;">
+<div style="background-image: url('from-bottom.png'); width: 41px; height: 73px;"></div>
+</div>
+</div>
+</div>
+</div>
+<div id="banner">
+<div id="bannerOffset" style="position:relative">
+<div style="background: url('new-header.jpg') no-repeat; width: 320px; height:98px;"></div>
+<div id="top-tab" style="background-image: url('top-1.png'); width: 320px; height: 52px; position: relative;">
+	<div id="explore" data-image="top-1" class="tap-navigation" style="position: absolute; width: 106px; height: 62px;"></div>
+	<div id="showroom" data-image="top-2" class="tap-navigation" style="position: absolute; width: 105px; height: 62px; left: 114px;"></div>
+	<!--<div id="test-drive" data-image="top-3" class="tap-navigation" style="position: absolute; width: 95px; height: 62px; left: 226px;"></div>-->
+</div>
+<div id="vw-content" style="width: 320px; height: 286px; position: relative; background-color: black;">
+	<div id="explore-content" class="tap-content"></div>
+	<div id="showroom-content" class="tap-content" style="display: none;"></div>
+	<!--<div id="test-drive-content" class="tap-content" style="display: none;"></div>-->
+</div>
+<div style="background-color: #000; width: 320px; height: 30px; position: relative;">
+	<div style="background-image: url('share.png'); width: 143px; height: 26px; position: absolute; right: 10px;">
+		<div id="share-fb" style="width: 24px; height: 26px; position: absolute; left: 57px;"></div>
+		<div id="share-tw" style="width: 24px; height: 26px; position: absolute; left: 97px;"></div>
+	</div>
+</div>
+<div style="background: url('new-footer.jpg') no-repeat; width: 320px; height:102px;"></div>
+</div>
+</div>
+
+
+<script>
+var iframeMsg = {
+method: 'normalRisingStar',
+operation: '',
+adID: ''
+};
+iframeMsg.adID = '77666';
+
+var risingStar;
+var parentOrigin = '*';
+var browser = detectOSVersion();
+
+
+function init() {
+inimateInvitation();
+bindShare();
+}
+
+</script>
+<script>
+var intCar = document.getElementById('inv-car');
+var intText = document.getElementById('inv-text');
+var intLogo = document.getElementById('inv-logo');
+var intBtn = document.getElementById('inv-btn');
+var invitationAnimationObjs = [
+{obj: intCar, end: '200', attr: 'left', ani: 7},
+{obj: intText, end: '99', attr: 'left', ani: 7},
+{obj: intLogo, end: '0', attr: 'top', ani: -5},
+{obj: intBtn, end: '7', attr: 'top', ani: -5}
+];
+
+function inimateInvitation() {
+var animationRunning = 0;
+
+for(var i = 0; i < invitationAnimationObjs.length; i++) {
+var curAniObj = invitationAnimationObjs[i].obj;
+var curEnding = invitationAnimationObjs[i].end;
+var curAttr = invitationAnimationObjs[i].attr;
+var aniStep = invitationAnimationObjs[i].ani;
+var curValue = getValueInt(curAniObj.style[curAttr]);
+
+if(aniStep >= 0 && curValue < curEnding) {
+curAniObj.style[curAttr] = (curValue + aniStep) + 'px';
+animationRunning++;
+}
+else if(aniStep < 0 && curValue > curEnding && _isTimeToStartNextInvitationAni()) {
+curAniObj.style[curAttr] = (curValue + aniStep) + 'px';
+animationRunning++;
+}
+}
+
+if(animationRunning > 0) {
+requestAnimationFrame(inimateInvitation);
+}
+
+function _isTimeToStartNextInvitationAni() {
+return (getValueInt(intCar.style.left) >= 200);
+};
+};
+
+function getValueInt(position) {
+return parseInt(position.replace('px', ''));
+};
+
+function bindShare() {
+document.getElementById('share-fb').addEventListener('touchend', function(e) {
+e.preventDefault();
+e.stopPropagation();
+window.innityapps_execCommand('open?url=https%3A%2F%2Fwww.facebook.com%2Fsharer%2Fsharer.php%3Fu%3Dhttp%3A%2F%2Fwww.volkswagen.com.my%2Fen%2Fmodels%2Fgolf-gti%2Fgallery.html');
+}, false);
+
+document.getElementById('share-tw').addEventListener('touchend', function(e) {
+e.preventDefault();
+e.stopPropagation();
+window.innityapps_execCommand('open?url=https%3A%2F%2Ftwitter.com%2Fshare%3Furl%3Dhttp%3A%2F%2Fwww.volkswagen.com.my%2Fen%2Fmodels%2Fgolf-gti%2Fgallery.html');
+}, false);
+
+};
+</script>
+<script>
+var topNavigation = document.getElementById('top-tab');
+var exploreContent = document.getElementById('explore-content');
+var showroomContent = document.getElementById('showroom-content');
+var testDriveContent = document.getElementById('test-drive-content');
+var isBannerLoad = false;
+var isShowRoomLoad = false;
+var startYPositionToDisplayVideo = 0;
+function callbackWhenBannerFullyShown() {
+if(isBannerLoad === true) {
+return;
+}
+
+_initVMContent();
+_bindNavigationStyle();
+isBannerLoad = true;
+
+function _initVMContent() {
+var contentEl = document.createElement('div');
+contentEl.style.backgroundImage = 'url("vw_part1.jpg")';
+contentEl.style.width = '320px';
+contentEl.style.height = '286px';
+contentEl.style.position = 'relative';
+
+//					var vidEl = document.createElement('div');
+//					vidEl.setAttribute('id', 'video-content');
+//					vidEl.style.backgroundColor = 'black';
+//					vidEl.style.backgroundImage = 'url("vw_part2.jpg")';
+//					vidEl.style.backgroundRepeat = 'no-repeat';
+//					vidEl.style.backgroundPosition = '0px 70px';
+//					vidEl.style.width = '320px';
+//					vidEl.style.height = '380px';
+//					vidEl.style.position = 'absolute';
+//					vidEl.style.top = '100%';
+//					vidEl.style.display = 'none';
+//					vidEl.addEventListener('touchend', function(e) {
+//						e.preventDefault();
+//						e.stopPropagation();
+//						//TODO: goto a url?
+//						alert('play video');
+//					}, false);
+
+_appendIcons(contentEl);
+exploreContent.appendChild(contentEl);
+//					exploreContent.appendChild(vidEl);
+
+function _appendIcons(contentEl) {
+var iconsData = [
+	{id: 'back', left: 13, top: 155},
+	{id: 'top', left: 120, top: 120},
+	{id: 'front', left: 236, top: 153}
+];
+for(var j = 0; j < iconsData.length; j++) {
+	var icon = generateExploreIcon(iconsData[j]);
+	icon.addEventListener('touchend', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		MovingBg();
+	}, false);
+	contentEl.appendChild(icon);
+}
+};
+
+function _bindSwipeDown(contentEl) {
+contentEl.addEventListener('touchstart', function(e) {
+	startYPositionToDisplayVideo = e.changedTouches[0].clientY;
+}, false);
+contentEl.addEventListener('touchend', function(e) {
+	if((e.changedTouches[0].clientY - startYPositionToDisplayVideo) < -150) {
+		showVideo();
+	}
+}, false);
+};
+};
+
+function _bindNavigationStyle() {
+var navigations = document.getElementsByClassName('tap-navigation');
+for(var i = 0; i < navigations.length; i++) {
+var curNavigation = navigations[i];
+curNavigation.addEventListener('touchend', function(e) {
+	e.preventDefault();
+	e.stopPropagation();
+	topNavigation.style.backgroundImage = "url('" + this.getAttribute('data-image') + ".png')";
+	var navigations = document.getElementsByClassName('tap-content');
+	for(var i = 0; i < navigations.length; i++) {
+		var curNavigation = navigations[i];
+		curNavigation.style.display = 'none';
+	}
+	document.getElementById(this.id+'-content').style.display = '';
+}, false);
+}
+
+document.getElementById('showroom').addEventListener('touchend', function(e) {
+e.preventDefault();
+e.stopPropagation();
+
+if(isShowRoomLoad === true) {
+	return;
+}
+
+//						var mapEl = document.createElement('div');
+//						mapEl.style.backgroundImage = 'url("vw_part2.jpg")';
+//						mapEl.style.backgroundRepeat = 'no-repeat';
+//						mapEl.style.width = '320px';
+//						mapEl.style.height = '319px';
+
+var movieEl = document.createElement('video');
+movieEl.setAttribute('width', '300px');
+movieEl.setAttribute('height', '240px');
+movieEl.setAttribute('controls', 'controls');
+movieEl.setAttribute('poster', 'vw_part2.jpg');
+
+var srcWebm = document.createElement('source');
+srcWebm.src = 'vw-golf-gti.webm';
+srcWebm.setAttribute('type', 'video/webm');
+movieEl.appendChild(srcWebm);
+
+var srcMp4 = document.createElement('source');
+srcMp4.src = 'vw-golf-gti.mp4';
+srcMp4.setAttribute('type', 'video/mp4');
+movieEl.appendChild(srcMp4);
+
+//						var detailTriggerEl = document.createElement('div');
+//						detailTriggerEl.style.width = '40px';
+//						detailTriggerEl.style.height = '40px';
+//						detailTriggerEl.style.position = 'absolute';
+//						detailTriggerEl.style.top = '156px';
+//						detailTriggerEl.style.left = '244px';
+//						detailTriggerEl.addEventListener('touchend', displayShowroomDetail, false);
+//						mapEl.appendChild(detailTriggerEl);
+//
+//						var optionEl = document.createElement('div');
+//						optionEl.style.backgroundImage = 'url("vw_locator_list.png")';
+//						optionEl.style.backgroundRepeat = 'no-repeat';
+//						optionEl.style.width = '320px';
+//						optionEl.style.height = '26px';
+//						optionEl.style.position = 'absolute';
+//						optionEl.style.top = '300px';
+//						optionEl.style.left = '16px';
+
+showroomContent.appendChild(movieEl);
+//						showroomContent.appendChild(optionEl);
+isShowRoomLoad = true;
+}, false);
+
+//					document.getElementById('test-drive').addEventListener('touchend', function(e) {
+//						e.preventDefault();
+//						e.stopPropagation();
+//						bookTestDrive();
+//					}, false);
+};
+};
+
+/*
+var detailCreated = false;
+function displayShowroomDetail() {
+if(detailCreated === true) {
+var mapDetail = document.getElementById('map-detail');
+mapDetail.style.display = (mapDetail.style.display === '') ? 'none' : '';
+return;
+}
+
+var detailEl = document.createElement('div');
+detailEl.setAttribute('id', 'map-detail');
+detailEl.style.backgroundImage = 'url("locator_pop.png")';
+detailEl.style.backgroundRepeat = 'no-repeat';
+detailEl.style.width = '217px';
+detailEl.style.height = '226px';
+detailEl.style.position = 'absolute';
+detailEl.style.top = '35px';
+detailEl.style.left = '55px';
+detailEl.addEventListener('touchend', displayShowroomDetail, false);
+showroomContent.appendChild(detailEl);
+detailCreated = true;
+};
+*/
+
+function showVideo() {
+var vidEl = document.getElementById('video-content');
+vidEl.style.display = '';
+vidEl.style.top = '0px';
+console.log('show video');
+};
+
+function generateExploreIcon(icon) {
+var iconEl = document.createElement('div');
+iconEl.setAttribute('id', icon.id);
+iconEl.style.backgroundImage = 'url("vw_explore-icon.png")';
+iconEl.style.width = '51px';
+iconEl.style.height = '52px';
+iconEl.style.position = 'absolute';
+iconEl.style.left = icon.left + 'px';
+iconEl.style.top = icon.top + 'px';
+return iconEl;
+};
+</script>
+<script>
+var leftIntervalID = null;
+var rightIntervalID = null;
+function MovingBg() {
+exploreContent.innerHTML = '';
+var contentEl = document.createElement('div');
+contentEl.setAttribute('id', 'moving-bg');
+contentEl.style.backgroundImage = 'url("vw_interiro_pic.jpg")';
+contentEl.style.backgroundRepeat = 'no-repeat';
+contentEl.style.backgroundPosition = '0px 0px';
+contentEl.style.width = '320px';
+contentEl.style.height = '380px';
+contentEl.style.position = 'relative';
+contentEl.style.overflow = 'hidden';
+
+var iconContainer = document.createElement('div');
+iconContainer.setAttribute('id', 'moving-icon');
+iconContainer.style.position = 'relative';
+iconContainer.style.width = '320px';
+iconContainer.style.height = '150px';
+iconContainer.style.top = '132px';
+iconContainer.style.left = '0px';
+_appendIcons(iconContainer);
+contentEl.appendChild(iconContainer);
+
+var leftArrow = document.createElement('div');
+leftArrow.style.backgroundImage = 'url("arrow-left-new.png")';
+leftArrow.style.width = '23px';
+leftArrow.style.height = '26px';
+leftArrow.style.position = 'absolute';
+leftArrow.style.top = '200px';
+leftArrow.style.left = '10px';
+leftArrow.addEventListener('touchstart', function(e) {
+e.preventDefault();
+e.stopPropagation();
+leftIntervalID = setInterval(arrowMoveLeft, 100);
+}, false);
+leftArrow.addEventListener('touchend', function(e) {
+e.preventDefault();
+e.stopPropagation();
+clearInterval(leftIntervalID);
+}, false);
+contentEl.appendChild(leftArrow);
+
+var rightArrow = document.createElement('div');
+rightArrow.style.backgroundImage = 'url("arrow-right-new.png")';
+rightArrow.style.width = '23px';
+rightArrow.style.height = '26px';
+rightArrow.style.position = 'absolute';
+rightArrow.style.top = '200px';
+rightArrow.style.right = '10px';
+rightArrow.addEventListener('touchstart', function(e) {
+e.preventDefault();
+e.stopPropagation();
+rightIntervalID = setInterval(arrowMoveRight, 100);
+}, false);
+rightArrow.addEventListener('touchend', function(e) {
+e.preventDefault();
+e.stopPropagation();
+clearInterval(rightIntervalID);
+}, false);
+contentEl.appendChild(rightArrow);
+
+exploreContent.appendChild(contentEl);
+_createMovingBgImg();
+
+function _createMovingBgImg() {
+_bindAccelerometer();
+
+function _bindAccelerometer() {
+if(window.DeviceOrientationEvent) {
+	window.addEventListener('deviceorientation', function(eventData) {
+		deviceOrientationHandler(eventData.gamma);
+	}, false);
+}
+};
+};
+
+function _appendIcons(contentEl) {
+var iconsData = [
+{id: 'back', left: 35, top: 35},
+{id: 'top', left: 155, top: 0},
+{id: 'front', left: 236, top: 77}
+];
+for(var j = 0; j < iconsData.length; j++) {
+var icon = generateExploreIcon(iconsData[j]);
+icon.addEventListener('touchend', function(e) {
+	e.preventDefault();
+	e.stopPropagation();
+	// TODO: go where leh?
+//							alert('asdasds');
+	window.innityapps_execCommand('open?url=http%3A%2F%2Fwww.volkswagen.com.my%2Fen%2Fmodels%2Fgolf-gti%2Fgallery.html');
+}, false);
+contentEl.appendChild(icon);
+}
+};
+};
+
+function arrowMoveLeft() {
+deviceOrientationHandler(15);
+};
+
+function arrowMoveRight() {
+deviceOrientationHandler(-15);
+};
+
+function deviceOrientationHandler(tiltLR) {
+var movingBg = document.getElementById('moving-bg');
+var movingIcon = document.getElementById('moving-icon');
+if(movingBg === null || movingIcon === null) {
+return;
+}
+
+var movingPixel = 0;
+if(tiltLR > 5) {
+movingPixel = 5;
+}
+else if(tiltLR < -5) {
+movingPixel = -5;
+}
+
+var curX = getXValue(movingBg.style.backgroundPosition) + movingPixel;
+if(curX > 0 || curX < -233) {
+return;
+}
+movingBg.style.backgroundPosition = curX + 'px 0px';
+movingIcon.style.left = curX + 'px';
+};
+
+function getXValue(bgPosition) {
+var position = bgPosition.split(' ');
+return parseInt(position[0].replace('px', ''));
+};
+</script>
+<script>
+var idTestDriveLoad = false;
+function bookTestDrive() {
+if(idTestDriveLoad === true) {
+return;
+}
+
+var testDrive = document.createElement('div');
+testDrive.style.backgroundImage = 'url("form.jpg")';
+testDrive.style.backgroundRepeat = 'no-repeat';
+testDrive.style.width = '320px';
+testDrive.style.height = '306px';
+testDrive.style.position = 'relative';
+
+var addToCalenderEl = document.createElement('div');
+addToCalenderEl.style.width = '118px';
+addToCalenderEl.style.height = '40px';
+addToCalenderEl.style.position = 'absolute';
+addToCalenderEl.style.left = '166px';
+addToCalenderEl.style.top = '236px';
+addToCalenderEl.addEventListener('touchend', function(e) {
+e.preventDefault();
+e.stopPropagation();
+alert('add to calendar');
+}, false);
+testDrive.appendChild(addToCalenderEl);
+
+testDriveContent.appendChild(testDrive);
+idTestDriveLoad = true;
+};
+window.addEventListener('load', init, false);
+</script>
+</body>
+</html>

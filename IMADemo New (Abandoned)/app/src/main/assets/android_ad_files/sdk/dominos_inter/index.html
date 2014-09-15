@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dominos Pizza Interstitial</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0">
+<script type="text/javascript" src="RequestAnimationFrame.js"></script>
+<script>
+window.innityapps_bannerFormat = 7;
+window.innityapps_adHeight = 568;
+window.innityapps_setBannerHeight= function(height) {
+window.innityapps_adHeight=height; document.getElementById('banner').style.height = height+'px'; if(height<568){document.getElementById('bannerOffset').style.marginTop = '-'+((568-height)/2)+'px';}
+}
+window.innityapps_adDidExpand = function() {
+document.getElementById('invitation').style.display = 'none';
+callbackWhenBannerFullyShown();
+}
+window.innityapps_adWillCloseExpanded = function() {
+document.getElementById('invitation').style.display = 'block';
+}
+window.addEventListener('window.innityapps_adDidExpand', init, false);
+</script>
+<script src="http://i.appsploration.com/apps/mobile.js"></script>
+
+<style>
+body{margin:0px;padding:0px;}
+#invitation{width:320px;height:50px;position:absolute;left:0px;top:568px;}
+#banner{width:320px;height:568px;overflow-y:hidden;position:absolute;left:0px;top:568px;}
+#bannerOffset{width:320px;height:568px;overflow:hidden}
+</style>
+</head>
+<body>
+<div id="invitation">
+<div id="invitation-ad" style="position: absolute; bottom: 0px; width: 320px; height: 50px; -moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none;">
+<div id="imgLogo" style="background-image: url('invitation_back.png'); background-size: 320px 50px; background-position-x: 0px; width: 320px; height: 50px; margin: 0 auto; position: relative;">
+<!--<div id="invitation-close" style="background-image: url('close_button_small.png'); width: 20px; height: 20px; position: absolute; top: 0; right: 0; z-index: 50000;"></div>-->
+<img src="invitation_front.png" alt="Invitation Front" width="320" height="50" />
+</div>
+</div>
+</div>
+<div id="banner">
+<div id="bannerOffset">
+<!--<div id="ad-close" style="background-image: url('close_button.png'); width: 40px; height: 40px; position: absolute; top: 0; right: 0; z-index: 50000;"></div>-->
+<div style="width:320px; height:568px;">
+<div style="background:url('cut1.jpg') no-repeat; width:320px; height:416px; margin: 0 auto; position: relative;"><div id="banner-content" style="position:absolute; left:0px; top:0px; margin-top:54px; width:320px; height:362px"></div></div>
+<div id='navigation' style="width:320px; height:98px;">
+<a href="#"><img onclick="downloadCoupon();" alt="Download Coupon" style="float: left;" src="btn-download.jpg" width="84" height="98"></a>
+<a id="phone-dominos" href="tel:1300888333"><img alt="Phone" style="float: left;" src="btn-calltoorder.jpg" width="152" height="98"></a>
+<a href="#"><img alt="Watch Video" style="float: left;" src="btn-video.jpg" width="84" height="98"></a>
+</div>
+<div id="banner-footer" style="background:url('domino_iphone5_bottom.jpg') no-repeat; width:320px; height:54px;"></div>
+</div>
+</div>
+</div>
+<div id="innity_debugDiv" style="position: fixed; top: 0px; left: 0px; display: none;">innity_debugDiv</div>
+
+<script>
+function queryString() {
+var query_string = {};
+var query = window.location.search;
+if(query.indexOf('?') == 0) {
+query = query.substring(1);
+}
+var vars = query.split("&");
+for(var i=0;i<vars.length;i++) {
+var pair = vars[i].split("=");
+// If first entry with this name
+if (typeof query_string[pair[0]] === "undefined") {
+query_string[pair[0]] = pair[1];
+// If second entry with this name
+} else if (typeof query_string[pair[0]] === "string") {
+var arr = [ query_string[pair[0]], pair[1] ];
+query_string[pair[0]] = arr;
+// If third or later entry with this name
+} else {
+query_string[pair[0]].push(pair[1]);
+}
+}
+return query_string;
+};
+
+function getTargeting() {
+var target = {};
+var param = queryString();
+if(typeof(param.targeting) === 'undefined') {
+return '';
+}
+var targeting = unescape(param.targeting);
+var keyValues = targeting.split("|");
+for(var i = 0; i < keyValues.length; i++) {
+var pair = keyValues[i].split(":");
+target[pair[0]] = pair[1];
+}
+return target;
+};
+
+var invitation;
+var parentOrigin = '*';
+var target = getTargeting();
+
+function init() {
+invitation = new Invitation('invitation',  'invitation-ad', 'banner');
+//				document.getElementById('invitation-close').addEventListener('touchend', function(event) {
+//					event.stopPropagation();
+//					requestAnimationFrame(closeInvitation);
+//				}, false);
+//				document.getElementById('ad-close').addEventListener('touchend', function() {
+//					invitation.returnBack();
+//				});
+document.getElementById('phone-dominos').addEventListener('touchend', function(e) {
+e.preventDefault();
+top.location.href = 'tel:1300888333';
+}, false);
+window.addEventListener('resize', invitation.updateOnResize, false);
+}
+
+function closeInvitation() {
+invitationAd = document.getElementById('invitation-ad');
+var bottom = parseInt(getComputedStyle(invitationAd).getPropertyValue('bottom').replace('px', ''));
+if(bottom > -invitationAd.clientHeight) {
+invitationAd.style.bottom = (bottom - 5) + 'px';
+requestAnimationFrame(closeInvitation);
+}
+else {
+parent.postMessage('closeAd', parentOrigin);
+}
+};
+
+function Invitation(name, elementID, bannerContainerID) {
+//				this.returnBack = returnBack;
+//				this.pullOut = pullOut;
+//				this.updateOnResize = updateOnResize;
+
+var objName = name;
+var invitationAd = document.getElementById(elementID);
+var bannerAd = document.getElementById(bannerContainerID);
+var isTouch = false;
+var initialTouchX = 0;
+var distanceToEngage = 10;
+var returnBackX = 0;
+var bannerWidth = 0;
+var animationPixel = 20;
+var animationID;
+var isMsgSend = false;
+var notifyTimerID = null;
+
+_setBannerHeight();
+
+//				invitationAd.addEventListener('touchstart', _touchStart, false);
+//				invitationAd.addEventListener('touchend', _touchEnd, false);
+//				invitationAd.addEventListener('touchmove', _touchMove, false);
+
+function _touchStart(event) {
+event.preventDefault();
+initialTouchX = event.changedTouches[0].clientX;
+isTouch = true;
+};
+
+function _touchEnd(event) {
+event.preventDefault();
+returnBackX = parseInt(invitationAd.style.left.replace('px', ''));
+if((initialTouchX - event.changedTouches[0].clientX) > distanceToEngage) {
+pullOut();
+}
+else {
+notifyUser();
+}
+isTouch = false;
+isMsgSend = false;
+};
+
+function _touchMove(event) {
+event.preventDefault();
+if(isTouch) {
+if(!isMsgSend) {
+parent.postMessage('expand', parentOrigin);
+isMsgSend = true;
+}
+_setBannerHeight();
+var newLeft = event.changedTouches[0].clientX - initialTouchX;
+if(newLeft < 0) {
+if(notifyTimerID !== null) {
+clearTimeout(notifyTimerID);
+}
+this.style.left = (newLeft) + 'px';
+_updateBannerTop(newLeft);
+}
+}
+};
+
+function notifyUser() {
+parent.postMessage('expand', parentOrigin);
+var noticePixel = -20;
+invitationAd.style.left = noticePixel + 'px';
+_updateBannerTop(noticePixel);
+notifyTimerID = setTimeout(function() {
+parent.postMessage('collapse', parentOrigin);
+invitationAd.style.left = '0px';
+_updateBannerTop(0);
+}, 1000);
+};
+
+function returnBack() {
+_displayInvitation(1);
+if(returnBackX > 25) {
+returnBackX -= animationPixel;
+}
+else if(returnBackX < -26) {
+returnBackX += animationPixel;
+}
+else {
+returnBackX = 0;
+}
+
+invitationAd.style.left = returnBackX + 'px';
+_updateBannerTop(returnBackX);
+if(returnBackX === 0) {
+parent.postMessage('collapse', parentOrigin);
+returnBackX = 0;
+invitationAd.style.left = returnBackX + 'px';
+_updateBannerTop(returnBackX);
+cancelAnimationFrame(animationID);
+animationID = null;
+return;
+}
+animationID = requestAnimationFrame(eval(objName).returnBack);
+};
+
+function pullOut() {
+returnBackX -= animationPixel;
+invitationAd.style.left = returnBackX + 'px';
+_updateBannerTop(returnBackX);
+if(returnBackX < -bannerWidth) {
+returnBackX = -bannerWidth;
+_updateBannerTop(returnBackX);
+invitationAd.style.left = returnBackX + 'px';
+_showBanner();
+_displayInvitation(0);
+cancelAnimationFrame(animationID);
+animationID = null;
+return;
+}
+animationID = requestAnimationFrame(eval(objName).pullOut);
+};
+
+function _setBannerHeight() {
+bannerWidth = document.documentElement.clientWidth;
+};
+
+function updateOnResize() {
+returnBackX = -bannerWidth;
+};
+
+function _updateBannerTop(y) {
+bannerAd.style.left = (window.innerWidth + y) + 'px';
+};
+
+function _showBanner() {
+callbackWhenBannerFullyShown();
+};
+
+function _displayInvitation(show) {
+invitationAd.style.opacity = show;
+};
+};
+
+var bannerContent = document.getElementById('banner-content');
+function callbackWhenBannerFullyShown() {
+pizzaShowLayer();
+};
+
+initOrientation();
+function initOrientation() {
+if (window.DeviceOrientationEvent) {
+window.addEventListener('deviceorientation', function(eventData) {
+var tiltLR = eventData.gamma;
+deviceOrientationHandler(tiltLR);
+}, false);
+}
+};
+
+function deviceOrientationHandler(tiltLR) {
+if (tiltLR >= -30 && tiltLR <= 30) {
+tiltLR *= 2;
+var logo = document.getElementById("imgLogo");
+logo.style.backgroundPosition = tiltLR + 'px 0px';
+}
+};
+
+function pizzaShowLayer() {
+var content =
+"<img onclick='pizzaInfo();' id='arrow4' style='position: absolute; left: 32px; top: 132px;z-index:5;display: none;' src='arrow4.png'  />" +
+"<img onclick='pizzaInfo();' id='arrow2' style='position: absolute; left: 32px; top: 189px;z-index:5;display: none;' src='arrow2.png'  />" +
+"<img onclick='pizzaInfo();' id='arrow3' style='position: absolute; left: 32px; top: 235px;z-index:5;display: none;' src='arrow3.png'  />" +
+"<img onclick='pizzaInfo();' id='arrow1' style='position: absolute; left: 32px; top: 286px;z-index:5;display: none;' src='arrow1.png'  />" +
+"<img id='pizza_layer1' style='position: absolute; z-index: 4; left: 95px; top: 129px;' src='pizza-layer1.png' class='pizzaLayer'>" +
+"<img id='pizza_layer2' style='position: absolute; z-index: 3; left: 92px; top: 138px;' src='pizza-layer2.png' class='pizzaLayer'>" +
+"<img id='pizza_layer3' style='position: absolute; z-index: 2; left: 90px; top: 153px;' src='pizza-layer3.png' class='pizzaLayer'>" +
+"<img id='pizza_layer4' style='position: absolute; z-index: 1; left: 66px; top: 174px;' src='pizza-layer4.png' class='pizzaLayer'>" +
+"<img id='txt_burst' style='position: absolute; left: 14px; top: 304px;' src='txt-burst.png' width='296' height='19'>";
+document.getElementById('banner-content').innerHTML = content;
+bindShaker();
+};
+
+function bindShaker() {
+if(typeof window.DeviceMotionEvent !== 'undefined') {
+var sensitivity = 20;
+
+// Position variables
+var x1 = 0, y1 = 0, z1 = 0, x2 = 0, y2 = 0, z2 = 0;
+
+// Listen to motion events and update the position
+window.addEventListener('devicemotion', function(e) {
+x1 = e.accelerationIncludingGravity.x;
+y1 = e.accelerationIncludingGravity.y;
+z1 = e.accelerationIncludingGravity.z;
+}, false);
+
+// Periodically check the position and fire
+// if the change is greater than the sensitivity
+setInterval(function() {
+var change = Math.abs(x1 - x2 + y1 - y2 + z1 - z2);
+
+if (change > sensitivity) {
+shakeBurst();
+}
+
+// Update new position
+x2 = x1;
+y2 = y1;
+z2 = z1;
+}, 150);
+}
+else {
+var layers = document.getElementsByClassName('pizzaLayer');
+for(var i = 0; i < layers.length; i++) {
+layers[i].addEventListener('touchend', shakeBurst, false);
+}
+}
+};
+
+function shakeBurst() {
+document.getElementById('txt_burst').style.display = 'none';
+requestAnimationFrame(separate);
+};
+
+var layerPosition = [
+{id:'pizza_layer2', final:172},
+{id:'pizza_layer3', final:215},
+{id:'pizza_layer4', final:260}
+];
+function separate() {
+var distance = 5;
+var totalLayer = 0;
+
+for(var i = 0; i < layerPosition.length; i++) {
+var curLayer = layerPosition[i];
+var el = document.getElementById(curLayer['id']);
+var layerTop = parseInt(el.style.top.replace('px', ''));
+if(layerTop <= curLayer['final']) {
+layerTop += distance;
+el.style.top = layerTop + 'px';
+}
+else {
+totalLayer++;
+}
+
+}
+
+if(totalLayer !== layerPosition.length) {
+return requestAnimationFrame(separate);
+}
+showArrow();
+};
+
+function showArrow() {
+var arrows = ['arrow1', 'arrow2', 'arrow3', 'arrow4'];
+for(var i = 0; i < arrows.length; i++) {
+document.getElementById(arrows[i]).style.display = '';
+}
+};
+
+var swiper;
+function pizzaInfo() {
+var content = '<img id="show-left" style="position: absolute; left: 18px; top: 203px;" src="arrowleft.png" width="32" height="38" />' +
+'<div id="swipe-content" style="background-image: url(\'swipe_content.png\'); background-position: 0px 0px;' +
+'width: 225px; height: 225px; position: absolute; bottom: 16px; left: 51px;">' +
+'</div>' +
+'<img id="show-right" style="position: absolute; left: 273px; top: 218px;"  src="arrow-right.png" width="34" height="18" />';
+document.getElementById('banner-content').innerHTML = content;
+swiper = new gallerySwiper('swiper', 'swipe-content', 'show-left', 'show-right');
+console.log(swiper);
+};
+
+function downloadCoupon() {
+var content='<a href="javascript:void(0);" onclick="javascript:innityapps_execCommand(\'saveToGallery?url=http%3A%2F%2Fi.appsploration.com%2Fapps%2Fsdk%2Fdominos%2Fdownload.png\');"><img style="border:0px; position: absolute; z-index: 51000; left: 14px; top: 30px;" src="download.png" width="308" height="425" /></a> ';
+document.getElementById('banner-content').innerHTML += content;
+};
+</script>
+<script>
+function gallerySwiper(name, contentID, leftID, rightID) {
+this.toLeft = toLeft;
+this.toRight = toRight;
+
+var objName = name;
+var content = document.getElementById(contentID);
+var lefty = document.getElementById(leftID);
+var righty = document.getElementById(rightID);
+var currentX = 0;
+var xToStop = 0;
+var animationID = null;
+
+var initXSwipe = 0;
+var isSwipeStart = false;
+
+var picDistance = 225;
+var movement = 15;
+
+_initListener();
+
+function _initListener() {
+lefty.addEventListener('touchend', _moveLeft, false);
+righty.addEventListener('touchend', _moveRight, false);
+content.addEventListener('touchstart', _swipeStart, false);
+content.addEventListener('touchend', _swipeEnd, false);
+};
+
+function _swipeStart(e) {
+e.preventDefault();
+initXSwipe = e.changedTouches[0].clientX;
+isSwipeStart = true;
+};
+
+function _swipeEnd(e) {
+e.preventDefault();
+if(isSwipeStart === true) {
+if(e.changedTouches[0].clientX > initXSwipe) {
+_moveRight(e);
+}
+else if(e.changedTouches[0].clientX < initXSwipe) {
+_moveLeft(e);
+}
+}
+};
+
+function _moveLeft(e) {
+e.preventDefault();
+if(animationID === null) {
+xToStop = currentX - picDistance;
+toLeft();
+}
+};
+
+function _moveRight(e) {
+e.preventDefault();
+if(animationID === null) {
+xToStop = currentX + picDistance;
+toRight();
+}
+};
+
+function toLeft() {
+currentX -= movement;
+content.style.backgroundPosition = currentX + 'px 0';
+if(currentX <= xToStop) {
+currentX = xToStop;
+content.style.backgroundPosition = currentX + 'px 0';
+animationID = null;
+return;
+}
+animationID = requestAnimationFrame(eval(objName).toLeft);
+};
+
+function toRight() {
+currentX += movement;
+content.style.backgroundPosition = currentX + 'px 0';
+if(currentX >= xToStop) {
+currentX = xToStop;
+content.style.backgroundPosition = currentX + 'px 0';
+animationID = null;
+return;
+}
+animationID = requestAnimationFrame(eval(objName).toRight);
+};
+};
+</script>
+</body>
+</html>

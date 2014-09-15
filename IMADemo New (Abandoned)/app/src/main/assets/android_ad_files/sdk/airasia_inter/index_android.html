@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AirAsia</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0">
+<script type="text/javascript" src="http://cdn.media.innity.net/lib/html5.js"></script>
+<script type="text/javascript" src="RequestAnimationFrame.js"></script>
+<script>
+var importedJSONObject = [{"json_data":"{\"canvas\":{\"width\":320,\"height\":568,\"duration\":\"10\"},\"object\":[{\"url\":\"new_bg.jpg\",\"width\":323,\"height\":568,\"id\":\"img1\",\"name\":\"bg top\",\"x\":0,\"y\":0,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"zIndex\":0,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":{\"type\":\"CTracking\"}},{\"url\":\"bottom-book-now.png\",\"width\":323,\"height\":173,\"id\":\"img2\",\"name\":\"bg btm\",\"x\":0,\"y\":395,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"zIndex\":1,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\",\"click\":{\"time\":\"17\"}},\"cATrack\":{\"type\":\"CTracking\"}},{\"url\":\"animte-1-01.png\",\"width\":145,\"height\":70,\"id\":\"img3\",\"name\":\"spring\",\"x\":-146,\"y\":151,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"zIndex\":2,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":{\"type\":\"CTracking\"},\"steps\":[{\"id\":1,\"seq\":0,\"x\":-146,\"y\":151,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":23,\"y\":150.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.5,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":-146,\"y\":151,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.5,\"delay\":1,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"animte-1-02.png\",\"width\":121,\"height\":69,\"id\":\"img4\",\"name\":\"price\",\"x\":319,\"y\":266,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"zIndex\":3,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":{\"type\":\"CTracking\"},\"steps\":[{\"id\":1,\"seq\":0,\"x\":319,\"y\":266,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":33,\"y\":240.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.5,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":319,\"y\":266,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.5,\"delay\":1,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"5-beijing.png\",\"width\":89,\"height\":36,\"id\":\"img5\",\"name\":\"1 Beijing\",\"x\":73,\"y\":121,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":4,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":{\"type\":\"CTracking\"},\"steps\":[{\"id\":1,\"seq\":0,\"x\":73,\"y\":121,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":73.02398,\"y\":120.57443,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":1,\"delay\":2,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"plane-beijing.png\",\"width\":49,\"height\":43,\"id\":\"img6\",\"name\":\"plane to beijing\",\"x\":320,\"y\":15,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"zIndex\":5,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":{\"type\":\"CTracking\"},\"steps\":[{\"id\":1,\"seq\":0,\"x\":320,\"y\":15,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":151.58712,\"y\":106.80718,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":1,\"delay\":2,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":152,\"y\":107,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.1,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"4-shanghai.png\",\"width\":111,\"height\":38,\"id\":\"img7\",\"name\":\"2 Shanghai\",\"x\":117,\"y\":219.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":6,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":{\"type\":\"CTracking\"},\"steps\":[{\"id\":1,\"seq\":0,\"x\":117,\"y\":219.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":117,\"y\":219.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":1,\"delay\":3,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"plane-shanghai.png\",\"width\":44,\"height\":49,\"id\":\"img8\",\"name\":\"plane to shanghai\",\"x\":121,\"y\":110.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":7,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":{\"type\":\"CTracking\"},\"steps\":[{\"id\":1,\"seq\":0,\"x\":121,\"y\":110.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":121,\"y\":111,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.1,\"delay\":3.1,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":170.65105,\"y\":184.08355,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":1,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":4,\"seq\":3,\"x\":170.9989,\"y\":184.00032,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.1,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"3-hangzhou.png\",\"width\":114,\"height\":36,\"id\":\"img9\",\"name\":\"3 Hangzhou\",\"x\":100,\"y\":241.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":8,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":{\"type\":\"CTracking\"},\"steps\":[{\"id\":1,\"seq\":0,\"x\":100,\"y\":241.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"Img\"},{\"id\":2,\"seq\":1,\"x\":100,\"y\":241.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.5,\"delay\":4,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"2-guangzhou.png\",\"width\":123,\"height\":36,\"id\":\"img11\",\"name\":\"4 Guangzhou\",\"x\":33,\"y\":287.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":9,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":{\"type\":\"CTracking\"},\"steps\":[{\"id\":1,\"seq\":0,\"x\":33,\"y\":287.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":33,\"y\":287.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.5,\"delay\":5,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"plane-beijing.png\",\"width\":49,\"height\":43,\"id\":\"img10\",\"name\":\"plane to guangzhou\",\"x\":223,\"y\":209,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":10,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":{\"type\":\"CTracking\"},\"steps\":[{\"id\":1,\"seq\":0,\"x\":223,\"y\":209,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":223,\"y\":208.62724,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.1,\"delay\":4.2,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":139.18707,\"y\":273.47186,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":1.5,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":4,\"seq\":3,\"x\":139.00737,\"y\":273.98949,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.1,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"1-shenzhen.png\",\"width\":107,\"height\":36,\"id\":\"img12\",\"name\":\"5 Shenzhen\",\"x\":61,\"y\":315.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":11,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":{\"type\":\"CTracking\"},\"steps\":[{\"id\":1,\"seq\":0,\"x\":61,\"y\":315.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":61,\"y\":315.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":1,\"delay\":6,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"plane-shanghai.png\",\"width\":44,\"height\":49,\"id\":\"img13\",\"name\":\"plane to shenzhen\",\"x\":109,\"y\":277.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":12,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":{\"type\":\"CTracking\"},\"steps\":[{\"id\":1,\"seq\":0,\"x\":109,\"y\":277.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":109,\"y\":277.9804,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.1,\"delay\":5.9,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":130.95602,\"y\":299.93263,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":1,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":4,\"seq\":3,\"x\":130.99934,\"y\":299.99933,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.1,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]}]}","component_type":1,"id":19,"is_auto_play":1}];
+var isLoaded = false;
+window.innityapps_bannerFormat = 7;
+window.innityapps_adWidth = 320;
+window.innityapps_adHeight = 568;
+window.innityapps_setBannerWidth= function(width)
+{
+window.innityapps_adWidth=width;
+document.getElementById('invitationContents').style.position = 'absolute';
+document.getElementById('invitationContents').style.left = ((window.innityapps_adWidth - 320) / 2) + 'px';
+document.getElementById('bannerOffset').style.position = 'absolute';
+document.getElementById('bannerOffset').style.left = ((window.innityapps_adWidth - 320) / 2) + 'px';
+document.getElementById('invitation').style.width = width+'px';
+document.getElementById('banner').style.width = width+'px';
+//if(height<568){document.getElementById('bannerOffset').style.marginTop = '-'+((568-height)/2)+'px';}
+}
+window.innityapps_setBannerHeight= function(height) {
+window.innityapps_adHeight=height;
+if(height>568)
+{
+document.getElementById('bannerOffset').style.position = 'absolute';
+document.getElementById('bannerOffset').style.top = ((height-568)/2)+'px';
+}
+document.getElementById('banner').style.height = height+'px';
+if(height<568)
+{
+document.getElementById('bannerOffset').style.marginTop = '-'+((568-height)/2)+'px';
+}
+}
+window.innityapps_adDidExpand = function() {
+var bannerContent = document.getElementById('banner-content');
+callbackWhenBannerFullyShown();
+function callbackWhenBannerFullyShown() {
+if(isLoaded === true) {
+return;
+}
+
+bannerContent.innerHTML = '';
+_createCanvasDiv();
+_loadAnimationScript();
+initComposerCall();
+isLoaded = true;
+
+function _createCanvasDiv() {
+var outerEl = document.createElement('div');
+var canvasEl = document.createElement('div');
+canvasEl.setAttribute('id', 'p5banner');
+canvasEl.style.position = 'absolute';
+outerEl.appendChild(canvasEl);
+bannerContent.appendChild(outerEl);
+
+var hiddenImgEl = document.createElement('div');
+hiddenImgEl.setAttribute('id', 'imgHiddenArea');
+hiddenImgEl.style.display = 'none';
+hiddenImgEl.style.position = 'absolute';
+bannerContent.appendChild(hiddenImgEl);
+
+var hiddenVidEl = document.createElement('div');
+hiddenVidEl.setAttribute('id', 'vidHiddenArea');
+bannerContent.appendChild(hiddenVidEl);
+
+_createAnotherContent();
+
+function _createAnotherContent() {
+var anotherDivEl = document.createElement('div');
+anotherDivEl.setAttribute('id', 'another-banner');
+anotherDivEl.style.position = 'absolute';
+anotherDivEl.style.display = 'none';
+anotherDivEl.style.width = '320px';
+anotherDivEl.style.height = '198px';
+anotherDivEl.style.top = '81px';
+anotherDivEl.style.background = 'rgba(0, 0, 0, 0.5)';
+
+var movieEl = document.createElement('video');
+movieEl.setAttribute('width', '300px');
+movieEl.setAttribute('height', '180px');
+movieEl.setAttribute('controls', 'controls');
+movieEl.setAttribute('poster', 'poster.jpg');
+movieEl.style.padding = '10px';
+
+var srcWebm = document.createElement('source');
+srcWebm.src = 'airasia.webm';
+srcWebm.setAttribute('type', 'video/webm');
+movieEl.appendChild(srcWebm);
+
+var srcMp4 = document.createElement('source');
+srcMp4.src = 'airasia.mp4';
+srcMp4.setAttribute('type', 'video/mp4');
+movieEl.appendChild(srcMp4);
+
+anotherDivEl.appendChild(movieEl);
+
+bannerContent.appendChild(anotherDivEl);
+};
+
+var anotherDivEl = document.createElement('div');
+anotherDivEl.setAttribute('id', 'another-banner');
+anotherDivEl.style.position = 'absolute';
+anotherDivEl.style.display = 'none';
+anotherDivEl.style.width = '320px';
+anotherDivEl.style.height = '568px';
+anotherDivEl.style.background = 'url("main_banner.jpg") no-repeat';
+
+var appleApp = document.createElement('div');
+appleApp.style.width = '125px';
+appleApp.style.height = '38px';
+appleApp.style.position = 'absolute';
+appleApp.style.left = '20px';
+appleApp.style.top = '456px';
+appleApp.addEventListener('touchend', function(e) {
+e.preventDefault();
+e.stopPropagation();
+window.innityapps_execCommand('open?url=https%3A%2F%2Fitunes.apple.com%2Fth%2Fapp%2Fairasia%2Fid565050268%3Fmt%3D8');
+}, false);
+anotherDivEl.appendChild(appleApp);
+
+var androidApp = document.createElement('div');
+androidApp.style.width = '125px';
+androidApp.style.height = '38px';
+androidApp.style.position = 'absolute';
+androidApp.style.left = '173px';
+androidApp.style.top = '456px';
+androidApp.addEventListener('touchend', function(e) {
+e.preventDefault();
+e.stopPropagation();
+window.innityapps_execCommand('open?url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.airasia.mobile');
+}, false);
+anotherDivEl.appendChild(androidApp);
+
+bannerContent.appendChild(anotherDivEl);
+};
+
+function _loadAnimationScript() {
+var animationScript = ['Appsploration.js', 'CoreEngine.js?a=b'];
+
+for(var i = 0; i < animationScript.length; i++) {
+var scriptEl = document.createElement('script');
+scriptEl.setAttribute('type', 'text/javascript');
+scriptEl.src = animationScript[i] + '?a=7';
+document.head.appendChild(scriptEl);
+}
+document.write;
+};
+};
+function initComposerCall() {
+if(typeof(PEaseHelper) === 'function' && typeof(PFontHelper) === 'function') {
+initComposer();
+bookNow();
+}
+else {
+setTimeout(initComposerCall, 200);
+}
+};
+
+function bookNow() {
+var bookNowEl = document.createElement('div');
+bookNowEl.setAttribute('id', 'booknow-div');
+bookNowEl.style.position = 'absolute';
+bookNowEl.style.left = '0px';
+bookNowEl.style.top = '395px';
+bookNowEl.style.width = '320px';
+bookNowEl.style.height = '173px';
+bookNowEl.addEventListener('touchend', function(e) {
+e.preventDefault();
+window.innityapps_execCommand('open?url=https%3A%2F%2Fwww.airasia.com');
+}, false);
+bookNowEl.addEventListener('touchmove', function(e) {
+e.preventDefault();
+}, false);
+
+bannerContent.appendChild(bookNowEl);
+};
+};
+window.innityapps_adWillCloseExpanded = function() {
+document.getElementById('invitation').style.display = 'block';
+};
+</script>
+<script src="mobile_android.js"></script>
+
+<style>
+body{margin:0px;padding:0px;}
+#invitationBG{background-color:black; opacity:0.5; z-index:-100; position:absolute; display:block; width:100%; height:100%}
+#invitation{width:320px;height:50px;position:absolute;left:0px;top:568px;}
+#bannerBG{background-color:black; opacity:0.8; z-index:-100; position:absolute; display:block; width:100%; height:100%}
+#banner{width:320px;height:568px;overflow-y:hidden;position:absolute;left:0px;top:568px;}
+#bannerOffset{width:320px;height:568px;overflow:hidden}
+.error-msg{color:red;}
+</style>
+</head>
+<body>
+<div id="invitation">
+<div id="invitationBG"></div>
+<div id="invitationContents">
+<img alt="up" src="invitation.jpg" width="320" height="50">
+</div>
+</div>
+<div id="banner">
+<div id="bannerBG"></div>
+<div id="bannerOffset" style="background:url('new_bg.jpg')">
+<div id="banner-content" style="width: 100%;"></div>
+</div>
+</div>
+<div id="hidden-div" style="display: none;"></div>
+<div id="innity_debugDiv" style="position: fixed; top: 0px; left: 0px; display: none;">innity_debugDiv</div>
+</body>
+</html>

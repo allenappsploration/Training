@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Samsung</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0">
+<script type="text/javascript" src="http://cdn.media.innity.net/lib/html5.js"></script>
+<script type="text/javascript" src="RequestAnimationFrame.js"></script>
+<script>
+var importedJSONObject = [{"json_data":"{\"canvas\":{\"width\":320,\"height\":568,\"duration\":\"10\"},\"object\":[{\"url\":\"bg.jpg\",\"width\":320,\"height\":568,\"id\":\"img1\",\"name\":\"bg\",\"x\":0,\"y\":0,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"zIndex\":0,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[]},{\"url\":\"smartwatch.png\",\"width\":146,\"height\":314,\"id\":\"img2\",\"name\":\"gear\",\"x\":89,\"y\":150.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":1,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":89,\"y\":150.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":89,\"y\":150.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.5,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":145,\"y\":150.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.5,\"delay\":8,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"ico-memographer-on.png\",\"width\":46,\"height\":46,\"id\":\"img14\",\"name\":\"camera active\",\"x\":138,\"y\":133,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":2,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":138,\"y\":133,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":138,\"y\":133,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.2,\"delay\":4.4,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":138,\"y\":133,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.2,\"delay\":1,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"img-call.jpg\",\"width\":122,\"height\":120,\"id\":\"img10\",\"name\":\"call watch\",\"x\":101,\"y\":239.6024,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":3,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":101,\"y\":239.6024,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":101,\"y\":239.6024,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.2,\"delay\":2,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":101,\"y\":239.6024,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.2,\"delay\":1,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"btn-skip.png\",\"width\":270,\"height\":40,\"id\":\"img3\",\"name\":\"skip\",\"x\":27.07775,\"y\":457.91843,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":4,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\",\"click\":{\"time\":\"77\"}},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":27.07775,\"y\":457.91843,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":27,\"y\":458,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.5,\"delay\":0.5,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":27.07775,\"y\":457.91843,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":1,\"delay\":7,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"ico-call.png\",\"width\":46,\"height\":46,\"id\":\"img4\",\"name\":\"call\",\"x\":24,\"y\":219.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":5,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":24,\"y\":219.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":24,\"y\":219.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.2,\"delay\":1,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":24,\"y\":219.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.2,\"delay\":7.4,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"ico-call-on.png\",\"width\":46,\"height\":46,\"id\":\"img9\",\"name\":\"call active\",\"x\":24,\"y\":220,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":6,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":24,\"y\":220,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":24,\"y\":220,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.2,\"delay\":2,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":24,\"y\":220,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.2,\"delay\":1,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"ico-svoice.png\",\"width\":46,\"height\":46,\"id\":\"img5\",\"name\":\"voice\",\"x\":59,\"y\":156.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":7,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":59,\"y\":156.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":59,\"y\":156.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.2,\"delay\":1.2,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":59,\"y\":156.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.2,\"delay\":7.2,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"ico-svoice-on.png\",\"width\":46,\"height\":46,\"id\":\"img11\",\"name\":\"voice active\",\"x\":59,\"y\":157,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":8,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":59,\"y\":157,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":59,\"y\":157,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.2,\"delay\":3.2,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":59,\"y\":157,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.2,\"delay\":1,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"img-svoice.jpg\",\"width\":122,\"height\":120,\"id\":\"img12\",\"name\":\"voice watch\",\"x\":101,\"y\":240,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":9,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":101,\"y\":240,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":101,\"y\":240,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.2,\"delay\":3.2,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":101,\"y\":240,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.2,\"delay\":1,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"ico-memographer.png\",\"width\":46,\"height\":46,\"id\":\"img6\",\"name\":\"camera\",\"x\":138,\"y\":132.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":10,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":138,\"y\":132.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":138,\"y\":132.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.2,\"delay\":1.4,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":138,\"y\":132.6,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.2,\"delay\":6.8,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"ico-notification.png\",\"width\":46,\"height\":46,\"id\":\"img7\",\"name\":\"sync\",\"x\":223,\"y\":157,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":11,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":223,\"y\":157,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":223,\"y\":157,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.2,\"delay\":1.6,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":223,\"y\":157,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.2,\"delay\":6.4,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"ico-voicememo.png\",\"width\":46,\"height\":46,\"id\":\"img8\",\"name\":\"memo\",\"x\":257,\"y\":220,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":12,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":257,\"y\":220,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":257,\"y\":220,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.2,\"delay\":1.8,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":257,\"y\":220,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.2,\"delay\":5.8,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"img-memographer.jpg\",\"width\":122,\"height\":120,\"id\":\"img13\",\"name\":\"camero watch\",\"x\":101,\"y\":240,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":13,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":101,\"y\":240,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":101,\"y\":240,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.2,\"delay\":4.4,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":101,\"y\":240,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.2,\"delay\":1,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"txtbg.png\",\"width\":320,\"height\":50,\"id\":\"img15\",\"name\":\"text bg\",\"x\":320,\"y\":395,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"zIndex\":14,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":320,\"y\":395,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":1.6,\"y\":394.60597,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.2,\"delay\":1.8,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":0.04733,\"y\":394.9922,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":1,\"delay\":6,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"text\":\"CALL\",\"font\":\"Serif\",\"size\":30,\"colour\":\"#ffffff\",\"id\":\"txt16\",\"name\":\"call text\",\"x\":128,\"y\":399,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":15,\"type\":\"Text\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":128,\"y\":399,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":128,\"y\":399,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.2,\"delay\":2,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":128,\"y\":399,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.2,\"delay\":1,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"text\":\"S Voice\",\"font\":\"Serif\",\"size\":30,\"colour\":\"#ffffff\",\"id\":\"txt17\",\"name\":\"voice text\",\"x\":114,\"y\":399,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":16,\"type\":\"Text\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":114,\"y\":399,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":114,\"y\":399,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.2,\"delay\":3.2,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":114,\"y\":399,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.2,\"delay\":1,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"text\":\"Memographer\",\"font\":\"Serif\",\"size\":25,\"colour\":\"#ffffff\",\"id\":\"txt18\",\"name\":\"camera text\",\"x\":89,\"y\":403,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":17,\"type\":\"Text\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":89,\"y\":403,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":89,\"y\":403,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.2,\"delay\":4.4,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":89,\"y\":403,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.2,\"delay\":1,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"ico-notification-on.png\",\"width\":46,\"height\":46,\"id\":\"img19\",\"name\":\"sync active\",\"x\":223,\"y\":157,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":18,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":223,\"y\":157,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":223,\"y\":157,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.2,\"delay\":5.6,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":223,\"y\":157,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.2,\"delay\":1,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"img-notifications.jpg\",\"width\":122,\"height\":120,\"id\":\"img20\",\"name\":\"sync watch\",\"x\":101,\"y\":240,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":19,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":101,\"y\":240,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":101,\"y\":240,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.2,\"delay\":5.6,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":101,\"y\":240,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.2,\"delay\":1,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"text\":\"Notification & Smart Relay\",\"font\":\"Serif\",\"size\":20,\"colour\":\"#ffffff\",\"id\":\"txt21\",\"name\":\"sync text\",\"x\":45,\"y\":410,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":20,\"type\":\"Text\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":45,\"y\":410,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":44.99,\"y\":409.7,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.2,\"delay\":5.6,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":44.99995,\"y\":409.9985,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.2,\"delay\":1,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"ico-voicememo-on.png\",\"width\":46,\"height\":46,\"id\":\"img22\",\"name\":\"memo active\",\"x\":257,\"y\":220,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":21,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":257,\"y\":220,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":257,\"y\":220,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.2,\"delay\":6.8,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":257,\"y\":220,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.2,\"delay\":1,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"url\":\"img-voicememo.jpg\",\"width\":122,\"height\":120,\"id\":\"img23\",\"name\":\"memo watch\",\"x\":101,\"y\":240,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":22,\"type\":\"Img\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":101,\"y\":240,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":101,\"y\":240,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.2,\"delay\":6.8,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":101,\"y\":240,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.2,\"delay\":1,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]},{\"text\":\"Voice Memo\",\"font\":\"Serif\",\"size\":30,\"colour\":\"#ffffff\",\"id\":\"txt24\",\"name\":\"memo text\",\"x\":80,\"y\":399,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"zIndex\":23,\"type\":\"Text\",\"cEvent\":{\"type\":\"CEvent\"},\"cATrack\":[],\"steps\":[{\"id\":1,\"seq\":0,\"x\":80,\"y\":399,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0,\"delay\":0,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":2,\"seq\":1,\"x\":80,\"y\":399,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":1,\"duration\":0.2,\"delay\":6.8,\"easing\":\"linear\",\"type\":\"OAnimStep\"},{\"id\":3,\"seq\":2,\"x\":80,\"y\":399,\"scaleX\":1,\"scaleY\":1,\"angle\":0,\"opacity\":0,\"duration\":0.2,\"delay\":1,\"easing\":\"linear\",\"type\":\"OAnimStep\"}]}]}","component_type":1,"id":20,"is_auto_play":1}];
+var isLoaded = false;
+window.innityapps_bannerFormat = 8;
+window.innityapps_adWidth = 320;
+window.innityapps_adHeight = 568;
+window.innityapps_setBannerWidth= function(width) {
+window.innityapps_adWidth=width;
+document.getElementById('bannerOffset').style.position = 'absolute';
+document.getElementById('bannerOffset').style.left = ((window.innityapps_adWidth - 320) / 2) + 'px';
+document.getElementById('banner').style.width = width+'px';
+//if(height<568){document.getElementById('bannerOffset').style.marginTop = '-'+((568-height)/2)+'px';}
+}
+window.innityapps_setBannerHeight= function(height) {
+window.innityapps_adHeight=height;
+if(height>568)
+{
+document.getElementById('bannerOffset').style.position = 'absolute';
+document.getElementById('bannerOffset').style.top = ((height-568)/2)+'px';
+}
+document.getElementById('banner').style.height = height+'px';
+if(height<568)
+{
+document.getElementById('bannerOffset').style.marginTop = '-'+((568-height)/2)+'px';
+}
+}
+window.innityapps_adDidExpand = function() {
+var bannerContent = document.getElementById('banner-content');
+callbackWhenBannerFullyShown();
+function callbackWhenBannerFullyShown() {
+if(isLoaded === true) {
+return;
+}
+
+bannerContent.innerHTML = '';
+_createCanvasDiv();
+_loadAnimationScript();
+initComposerCall();
+isLoaded = true;
+
+function _createCanvasDiv() {
+var outerEl = document.createElement('div');
+var canvasEl = document.createElement('div');
+canvasEl.setAttribute('id', 'p5banner');
+canvasEl.style.position = 'absolute';
+outerEl.appendChild(canvasEl);
+bannerContent.appendChild(outerEl);
+
+var hiddenImgEl = document.createElement('div');
+hiddenImgEl.setAttribute('id', 'imgHiddenArea');
+hiddenImgEl.style.display = 'none';
+hiddenImgEl.style.position = 'absolute';
+bannerContent.appendChild(hiddenImgEl);
+
+var hiddenVidEl = document.createElement('div');
+hiddenVidEl.setAttribute('id', 'vidHiddenArea');
+bannerContent.appendChild(hiddenVidEl);
+
+_generateMainBanner();
+
+function _generateMainBanner() {
+var anotherDivEl = document.createElement('div');
+anotherDivEl.setAttribute('id', 'another-banner');
+anotherDivEl.style.position = 'absolute';
+anotherDivEl.style.display = 'none';
+anotherDivEl.style.width = '320px';
+anotherDivEl.style.height = '568px';
+anotherDivEl.style.background = 'url("bg.jpg") no-repeat';
+
+var gearEl = document.createElement('div');
+gearEl.style.position = 'absolute';
+gearEl.style.width = '188px';
+gearEl.style.height = '314px';
+gearEl.style.top = '151px';
+gearEl.style.left = '150px';
+gearEl.style.background = 'url("smartwatch.png") no-repeat';
+anotherDivEl.appendChild(gearEl);
+
+var feaEl = document.createElement('div');
+feaEl.style.position = 'absolute';
+feaEl.style.width = '118px';
+feaEl.style.height = '82px';
+feaEl.style.top = '191px';
+feaEl.style.left = '19px';
+feaEl.style.background = 'url("btn-features.png") no-repeat';
+feaEl.addEventListener('touchend', function(e) {
+	e.preventDefault();
+	e.stopPropagation();
+	window.innityapps_execCommand('open?url=http%3A%2F%2Fwww.samsung.com%2Fuk%2Fconsumer%2Fmobile-devices%2Fgalaxy-gear%2Fgalaxy-gear%2FSM-V7000ZKABTU-features');
+}, false);
+anotherDivEl.appendChild(feaEl);
+
+var colorEl = document.createElement('div');
+colorEl.style.position = 'absolute';
+colorEl.style.width = '117px';
+colorEl.style.height = '45px';
+colorEl.style.top = '280px';
+colorEl.style.left = '19px';
+colorEl.style.background = 'url("btn-orange.png") no-repeat';
+colorEl.addEventListener('touchend', function(e) {
+	e.preventDefault();
+	e.stopPropagation();
+	window.innityapps_execCommand('open?url=http%3A%2F%2Fwww.samsung.com%2Fuk%2Fconsumer%2Fmobile-devices%2Fgalaxy-gear%2Fgalaxy-gear%2FSM-V7000ZKABTU-gallery');
+}, false);
+anotherDivEl.appendChild(colorEl);
+
+var vidEl = document.createElement('div');
+vidEl.style.position = 'absolute';
+vidEl.style.width = '118px';
+vidEl.style.height = '45px';
+vidEl.style.top = '332px';
+vidEl.style.left = '19px';
+vidEl.style.background = 'url("btn-video.png") no-repeat';
+vidEl.addEventListener('touchend', function(e) {
+	e.preventDefault();
+	e.stopPropagation();
+	window.innityapps_execCommand('open?url=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Df2AjPfHTIS4');
+}, false);
+anotherDivEl.appendChild(vidEl);
+
+var tagEl = document.createElement('div');
+tagEl.style.position = 'absolute';
+tagEl.style.width = '320px';
+tagEl.style.height = '52px';
+tagEl.style.top = '450px';
+tagEl.style.left = '0px';
+tagEl.style.background = 'url("tagline.png") no-repeat';
+anotherDivEl.appendChild(tagEl);
+
+bannerContent.appendChild(anotherDivEl);
+};
+};
+
+function _loadAnimationScript() {
+var animationScript = ['Appsploration.js', 'CoreEngine.js?a=b'];
+
+for(var i = 0; i < animationScript.length; i++) {
+	var scriptEl = document.createElement('script');
+	scriptEl.setAttribute('type', 'text/javascript');
+	scriptEl.src = animationScript[i] + '?a=7';
+	document.head.appendChild(scriptEl);
+}
+document.write;
+};
+};
+function initComposerCall() {
+if(typeof(PEaseHelper) === 'function' && typeof(PFontHelper) === 'function') {
+initComposer();
+}
+else {
+setTimeout(initComposerCall, 200);
+}
+};
+};
+window.innityapps_adWillCloseExpanded = function() {
+document.getElementById('invitation').style.display = 'block';
+};
+</script>
+<script src="mobile_android.js"></script>
+
+<style>
+body{margin:0px;padding:0px;}
+#invitationBG{background-color:black; opacity:0.5; z-index:-100; position:absolute; display:block; width:100%; height:100%}
+#invitation{width:320px;height:50px;position:absolute;left:0px;top:0px;}
+#bannerBG{background-color:black; opacity:0.8; z-index:-100; position:absolute; display:block; width:100%; height:100%}
+#banner{width:320px;height:568px;overflow-y:hidden;position:absolute;left:0px;top:50px;}
+#bannerOffset{width:320px;height:568px;overflow:hidden}
+.error-msg{color:red;}
+</style>
+</head>
+<body>
+<div id="invitation">
+<img alt="up" src="invitation-ad.png" width="320" height="50">
+</div>
+<div id="banner">
+<div id="bannerBG"></div>
+<div id="bannerOffset" style="background:url('bg.jpg');">
+<div id="banner-content" style="width: 100%;"></div>
+</div>
+</div>
+<div id="hidden-div" style="display: none;"></div>
+<div id="innity_debugDiv" style="position: fixed; top: 0px; left: 0px; display: none;">innity_debugDiv</div>
+</body>
+</html>

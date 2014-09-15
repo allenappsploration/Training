@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>IKEA</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0">
+<script>
+window.innityapps_bannerFormat = 4;
+window.innityapps_adWidth = 320;
+window.innityapps_adHeight = 568;
+window.innityapps_setBannerWidth= function(width) {
+window.innityapps_adWidth=width;
+document.getElementById('invitationContents').style.position = 'absolute';
+document.getElementById('invitationContents').style.left = ((window.innityapps_adWidth - 320) / 2) + 'px';
+document.getElementById('bannerOffset').style.position = 'absolute';
+document.getElementById('bannerOffset').style.left = ((window.innityapps_adWidth - 320) / 2) + 'px';
+document.getElementById('invitation').style.width = width+'px';
+document.getElementById('banner').style.width = width+'px';
+//if(height<568){document.getElementById('bannerOffset').style.marginTop = '-'+((568-height)/2)+'px';}
+}
+window.innityapps_setBannerHeight= function(height) {
+window.innityapps_adHeight=height;
+if(height>568)
+{
+document.getElementById('bannerOffset').style.position = 'absolute';
+document.getElementById('bannerOffset').style.top = ((height-568)/2)+'px';
+}
+document.getElementById('banner').style.height = height+'px';
+if(height<568)
+{
+document.getElementById('bannerOffset').style.marginTop = '-'+((568-height)/2)+'px';
+}
+}
+window.innityapps_adDidExpand = function() {
+document.getElementById('invitation').style.display = 'none';
+loadBannerContent();
+};
+window.innityapps_adWillCloseExpanded = function() {
+document.getElementById('invitation').style.display = 'block';
+};
+</script>
+<script src="mobile_android.js"></script>
+
+<style>
+body{margin:0px;padding:0px;}
+#invitationBG{background-color:black; opacity:0.5; z-index:-100; position:absolute; display:block; width:100%; height:100%}
+#invitation{width:320px;height:50px;position:absolute;left:0px;top:0px;}
+#bannerBG{background-color:black; opacity:0.8; z-index:-100; position:absolute; display:block; width:100%; height:100%}
+#banner{width:320px;height:568px;overflow:hidden;position:absolute;left:0px;top:50px;}
+#bannerOffset{width:320px;height:568px;overflow:hidden}
+</style>
+</head>
+<body>
+<div id="invitation">
+<div id="invitationBG"></div>
+<div id="invitationContents">
+<img alt="up" src="invitation.png" width="320" height="50">
+</div>
+</div>
+<div id="banner">
+<div id="bannerBG"></div>
+<div id="bannerOffset">
+<div id="hotspot-content" style="position: absolute; overflow: hidden; width: 813px; height: 568px; left: -290px;"></div>
+<div id="background-content" style="position: absolute; overflow: hidden; width: 813px; height: 568px; background-color: white;">
+<div style="background-image: url('logo_ikea_small.jpg'); width: 140px; height: 64px; position: absolute; top: 180px; left: 85px;"></div>
+</div>
+<div id="item-detail" style="position: relative; z-index: 50; display: none; width: 320px; height: 568px; background-color: rgba(0, 0, 0, 0.3);">
+<div style="position: absolute; width: 198px; height: 275px; left: 62px; top: 94px;">
+<div id="close-detail" style="position: absolute; z-index: 90; width: 22px; height: 22px; right: 0px; top: 0px; background-image: url('close_info.jpg');"></div>
+<div id="detail-content" style="position: absolute; z-index: 70;"></div>
+<div id="share-dialog" style="position: absolute; z-index: 120; width: 198px; height: 275px; background-color: white; display: none;">
+<div id="close-share" style="position: absolute; z-index: 140; width: 22px; height: 22px; right: 0px; top: 0px; background-image: url('close_info.jpg');"></div>
+<div class="sharing" style="position: absolute; z-index: 160; background-image: url('share_fb.png'); width: 67px; height: 62px; top: 50px; left: 33px;" data-url='https://www.facebook.com/sharer/sharer.php?u='></div>
+<div class="sharing" style="position: absolute; z-index: 160; background-image: url('share_tw.png'); width: 67px; height: 62px; top: 50px; left: 104px;" data-url='https://twitter.com/share?url='></div>
+<div class="sharing" style="position: absolute; z-index: 160; background-image: url('share_email.png'); width: 67px; height: 62px; top: 124px; left: 33px;" data-url='mailto:'></div>
+<div class="sharing" style="position: absolute; z-index: 160; background-image: url('share_gp.png'); width: 67px; height: 62px; top: 124px; left: 104px;" data-url='https://plus.google.com/share?url='></div>
+<div style="position: absolute; z-index: 160; background-image: url('share_with_friend.png'); width: 179px; height: 31px; top: 124px; left: 104px; top: 210px; left: 11px;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="innity_debugDiv" style="position: fixed; top: 0px; left: 0px; display: none;">innity_debugDiv</div>
+
+<script>
+var hotspotContent;
+var backgroundContent;
+var itemDetail, detailContent, shareDialog;
+var backBg, midBg, frontBg, customHotspot;
+var totalImageStillLoading = 0;
+var shareURL = '';
+var intervalID = null;
+var isDetailing = false;
+var isLoaded = false;
+
+function loadBannerContent() {
+if(isLoaded === true) {
+return;
+}
+
+isLoaded = true;
+hotspotContent = document.getElementById('hotspot-content');
+_createBannerHotspots();
+_createBannerBG();
+_getCustomHotspot();
+bindScriptAfterImageLoaded();
+
+function _createBannerHotspots() {
+var hotspots = [
+{id: 'shelve', left: 355, top: 72, zIndex: 9, detail: 'shelve_info.jpg', share: 'http://www.ikea.com/my/en/catalog/products/00111994/'},
+{id: 'arm-chair', left: 688, top: 204, zIndex: 9, detail: 'chair_info.jpg', share: 'http://www.ikea.com/my/en/catalog/products/90160720/'},
+{id: 'white-chair', left: 206, top: 336, zIndex: 9, detail: 'white_chair_info.jpg', share: 'http://www.ikea.com/my/en/catalog/products/60193034/'},
+{id: 'bookcase', left: 79, top: 241, zIndex: 9, detail: 'bookcase_info.jpg', share: 'http://www.ikea.com/my/en/catalog/products/00172317/'},
+{id: 'bed', left: 422, top: 273, zIndex: 9, detail: 'bed_info.jpg', share: 'http://www.ikea.com/my/en/catalog/products/S59931585/'}
+];
+
+for(var i = 0; i < hotspots.length; i++) {
+var curHotspot = hotspots[i];
+var imageEl = document.createElement('img');
+imageEl.setAttribute('src', 'hotspot.png');
+imageEl.setAttribute('alt', 'Hotspot');
+imageEl.setAttribute('width', '42');
+imageEl.setAttribute('height', '41');
+imageEl.setAttribute('id', curHotspot.id);
+imageEl.setAttribute('data-detail', curHotspot.detail);
+imageEl.setAttribute('data-share', curHotspot.share);
+imageEl.style.position = 'absolute';
+imageEl.style.left = curHotspot.left + 'px';
+imageEl.style.top = curHotspot.top + 'px';
+imageEl.style.zIndex = curHotspot.zIndex;
+imageEl.onload = function() {
+totalImageStillLoading--;
+};
+imageEl.addEventListener('touchend', showDetail, false);
+totalImageStillLoading++;
+
+hotspotContent.appendChild(imageEl);
+}
+};
+
+function _createBannerBG() {
+backgroundContent = document.getElementById('background-content');
+backgroundContent.innerHTML = '';
+
+var bgs = [
+{id: 'front-bg', src: 'parallax_bg3.png', alt: 'Front Background', zIndex: 8, left: -290, top: 28},
+{id: 'mid-bg', src: 'parallax_bg2.png', alt: 'Middle Background', zIndex: 3, left: -290},
+{id: 'back-bg', src: 'parallax_bg1.png', alt: 'Back Background', zIndex: 2, left: -290}
+];
+
+for(var i = 0; i < bgs.length; i++) {
+var curBg = bgs[i];
+var bgEl = document.createElement('img');
+bgEl.setAttribute('src', curBg.src);
+bgEl.setAttribute('alt', curBg.alt);
+bgEl.setAttribute('width', '1003');
+bgEl.setAttribute('height', '568');
+bgEl.setAttribute('id', curBg.id);
+bgEl.style.position = 'absolute';
+bgEl.style.left = curBg.left + 'px';
+if(typeof(curBg.top) !== 'undefined') {
+bgEl.style.top = curBg.top + 'px';
+}
+bgEl.style.zIndex = curBg.zIndex;
+bgEl.onload = function() {
+totalImageStillLoading--;
+};
+totalImageStillLoading++;
+
+backgroundContent.appendChild(bgEl);
+}
+};
+
+function _getCustomHotspot() {
+customHotspot = document.getElementById('white-chair');
+};
+};
+
+function bindScriptAfterImageLoaded() {
+if(totalImageStillLoading <= 0) {
+clearInterval(intervalID);
+intervalID = null;
+initAllFunction();
+return;
+}
+
+if(intervalID === null) {
+intervalID = setInterval(bindScriptAfterImageLoaded, 100);
+}
+};
+
+function initAllFunction() {
+backBg = document.getElementById('back-bg');
+midBg = document.getElementById('mid-bg');
+frontBg = document.getElementById('front-bg');
+itemDetail = document.getElementById('item-detail');
+detailContent = document.getElementById('detail-content');
+shareDialog = document.getElementById('share-dialog');
+
+document.getElementById('close-detail').addEventListener('touchend', hideDetail, false);
+document.getElementById('close-share').addEventListener('touchend', hideShare, false);
+
+initShareEvent();
+initOrientation();
+};
+
+function initShareEvent() {
+var shareObjs = document.getElementsByClassName('sharing');
+for(var i = 0; i < shareObjs.length; i++) {
+shareObjs[i].addEventListener('touchend', shareEvent, false);
+}
+};
+
+function shareEvent(e) {
+e.preventDefault();
+var dataURL = this.getAttribute('data-url');
+window.innityapps_execCommand(encodeURIComponent('open?url='+dataURL+shareURL));
+};
+
+function initOrientation() {
+if (window.DeviceOrientationEvent) {
+window.addEventListener('deviceorientation', function(eventData) {
+var tiltLR = eventData.gamma;
+deviceOrientationHandler(tiltLR);
+}, false);
+}
+};
+
+var frontLayerMovement = 11;
+var midLayerMovement = 7;
+var backLayerMovement = 3;
+function deviceOrientationHandler(tiltLR) {
+if(isDetailing === true) {
+return;
+}
+
+tiltLR = Math.round(tiltLR);
+if(tiltLR < -5) {
+_moveLeft();
+}
+else if(tiltLR > 5) {
+_moveRight();
+}
+
+function _moveLeft() {
+if(_parseLeftToInt(midBg.style.left) > -490) {
+var newLeft = parseInt(_parseLeftToInt(midBg.style.left)) - midLayerMovement;
+if(newLeft < -490) {
+newLeft = -490;
+}
+midBg.style.left = newLeft + 'px';
+hotspotContent.style.left = newLeft + 'px';
+backBg.style.left = (parseInt(_parseLeftToInt(backBg.style.left)) - backLayerMovement) + 'px';
+frontBg.style.left = (parseInt(_parseLeftToInt(frontBg.style.left)) - frontLayerMovement) + 'px';
+customHotspot.style.left = (parseInt(_parseLeftToInt(customHotspot.style.left)) - frontLayerMovement + midLayerMovement) + 'px';
+}
+};
+
+function _moveRight() {
+if(_parseLeftToInt(midBg.style.left) < 0) {
+var newLeft = parseInt(_parseLeftToInt(midBg.style.left)) + midLayerMovement;
+if(newLeft > 0) {
+newLeft = 0;
+}
+midBg.style.left = newLeft + 'px';
+hotspotContent.style.left = newLeft + 'px';
+backBg.style.left = (parseInt(_parseLeftToInt(backBg.style.left)) + backLayerMovement) + 'px';
+frontBg.style.left = (parseInt(_parseLeftToInt(frontBg.style.left)) + frontLayerMovement) + 'px';
+customHotspot.style.left = (parseInt(_parseLeftToInt(customHotspot.style.left)) + frontLayerMovement - midLayerMovement) + 'px';
+
+console.log(frontBg.style.left + ' and ' + customHotspot.style.left);
+}
+};
+
+function _parseLeftToInt(left) {
+if(typeof(left) === 'undefined' || left === '') {
+return 0;
+}
+
+return left.replace('px', '');
+};
+};
+
+function showDetail(e) {
+e.preventDefault();
+isDetailing = true;
+itemDetail.style.display = '';
+var imgEl = document.createElement('img');
+imgEl.setAttribute('src', this.getAttribute('data-detail'));
+shareURL = this.getAttribute('data-share');
+imgEl.addEventListener('touchend', function(e) {
+e.preventDefault();
+showShare(e);
+}, false);
+detailContent.appendChild(imgEl);
+};
+
+function showShare(e) {
+e.preventDefault();
+shareDialog.style.display = '';
+};
+
+function hideShare(e) {
+e.preventDefault();
+e.stopPropagation();
+shareDialog.style.display = 'none';
+};
+
+function hideDetail(e) {
+e.preventDefault();
+e.stopPropagation();
+isDetailing = false;
+detailContent.innerHTML = '';
+itemDetail.style.display = 'none';
+};
+</script>
+</body>
+</html>

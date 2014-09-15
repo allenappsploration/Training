@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>IKEA</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0">
+<script>
+window.innityapps_bannerFormat = 1;
+window.innityapps_adWidth = 320;
+window.innityapps_adHeight = 568;
+window.innityapps_setBannerWidth= function(width) {
+window.innityapps_adWidth=width;
+document.getElementById('invitationContents').style.position = 'absolute';
+document.getElementById('invitationContents').style.left = ((window.innityapps_adWidth - 320) / 2) + 'px';
+document.getElementById('bannerOffset').style.position = 'absolute';
+document.getElementById('bannerOffset').style.left = ((window.innityapps_adWidth - 320) / 2) + 'px';
+document.getElementById('invitation').style.width = width+'px';
+document.getElementById('banner').style.width = width+'px';
+//if(height<568){document.getElementById('bannerOffset').style.marginTop = '-'+((568-height)/2)+'px';}
+}
+window.innityapps_setBannerHeight= function(height) {
+window.innityapps_adHeight=height;
+if(height>568)
+{
+document.getElementById('bannerOffset').style.position = 'absolute';
+document.getElementById('bannerOffset').style.top = ((height-568)/2)+'px';
+}
+document.getElementById('banner').style.height = height+'px';
+if(height<568)
+{
+document.getElementById('bannerOffset').style.marginTop = '-'+((568-height)/2)+'px';
+}
+}
+window.innityapps_adDidExpand = function() {
+document.getElementById('invitation').style.display = 'none';
+loadBannerContent();
+document.getElementById('video1').play();
+};
+window.innityapps_adWillCloseExpanded = function() {
+pauseAllVideo();
+document.getElementById('invitation').style.display = 'block';
+};
+</script>
+<script src="mobile_android.js"></script>
+
+<style>
+body{margin:0px;padding:0px;}
+#invitationBG{background-color:black; opacity:0.5; z-index:-100; position:absolute; display:block; width:100%; height:100%}
+#invitation{width:320px;height:50px;position:absolute;left:0px;top:0px;}
+#bannerBG{background-color:black; opacity:0.8; z-index:-100; position:absolute; display:block; width:100%; height:100%}
+#banner{width:320px;height:568px;overflow:hidden;position:absolute;left:0px;top:50px; background-color: rgb(255, 215, 35);}
+#bannerOffset{width:320px;height:568px;overflow:hidden}
+#video1 {
+width:323px;
+height:182px;
+position:absolute;
+top:110px;
+}
+</style>
+</head>
+<body>
+<div id="invitation">
+<div id="invitationBG"></div>
+<div id="invitationContents">
+<img alt="up" src="invitation.jpg" width="320" height="50">
+</div>
+</div>
+<div id="banner">
+<div id="bannerBG"></div>
+<div id="bannerOffset">
+<div id="background-content" style="position: absolute; overflow: hidden; width: 813px; height: 568px; background-color: rgb(255, 215, 35); top: 54px;">
+</div>
+</div>
+</div>
+
+<script>
+var isLoaded = false;
+var bannerContent;
+
+window.addEventListener('load', init, false);
+
+function init() {
+bannerContent = document.getElementById('background-content');
+appendVideo();
+};
+
+function loadBannerContent() {
+if(isLoaded === true) {
+return;
+}
+
+mainContent(bannerContent);
+
+isLoaded = true;
+};
+
+function mainContent(container) {
+var bgEl = document.createElement('img');
+bgEl.src = '00_bg.jpg';
+bgEl.setAttribute('id', 'bg');
+
+container.appendChild(bgEl);
+};
+
+function appendVideo() {
+var videoEl = document.createElement('video');
+videoEl.setAttribute('id', 'video1');
+videoEl.setAttribute('poster', 'videoscrcap.png');
+videoEl.setAttribute('controls', '');
+videoEl.style.zIndex = 50;
+videoEl.addEventListener('click', function(e) {
+e.stopPropagation();
+}, false);
+
+var sources = [
+{src: 'http://i.appsploration.com/sk/innityCampaign/indoChannel6/u/video1.webm', type: 'video/webm'},
+{src: 'http://i.appsploration.com/sk/innityCampaign/indoChannel6/u/video1.mp4', type: 'video/mp4'}
+];
+for(var i = 0; i < sources.length; i++) {
+var curSource = sources[i];
+var scEl = document.createElement('source');
+scEl.setAttribute('src', curSource.src);
+scEl.setAttribute('type', curSource.type);
+videoEl.appendChild(scEl);
+}
+
+bannerContent.appendChild(videoEl);
+};
+
+function pauseAllVideo() {
+	var allVid = document.getElementsByTagName('video');
+	for(var i = 0; i < allVid.length; i++) {
+		allVid[i].pause();
+	}
+};
+</script>
+</body>
+</html>

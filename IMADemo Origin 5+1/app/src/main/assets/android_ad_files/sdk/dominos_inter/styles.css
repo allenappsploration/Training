@@ -1,0 +1,29 @@
+#wrapper ul
+{
+	list-style:none;
+	margin:0;
+	padding:0;
+	-webkit-transition: -webkit-transform 0s linear;
+	display:none;
+}
+
+#wrapper ul li
+{
+	float:left;
+}
+
+#wrapper ul li img
+{
+	-webkit-backface-visibility: hidden;
+	-webkit-perspective: 1000;
+}
+
+#wrapper
+{
+	overflow:hidden;
+	position:absolute;
+	background:transparent;
+	margin:50px auto;
+	left: 50px;
+	top: 67px;
+}
