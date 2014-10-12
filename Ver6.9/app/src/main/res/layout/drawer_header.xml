@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/img_NaviBanner"
+            android:layout_width="fill_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="top"
+            android:background="@drawable/banner"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            android:textColor="@android:color/black"
+            android:layout_margin="10dp"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_homePage"
+            android:text="Home Page"
+            android:textColor="@android:color/black"
+            android:background="@drawable/onclick_states"
+            android:layout_margin="10dp"
+            android:textSize="23dp"
+            android:textAlignment="center"
+            android:clickable="true"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Section"
+            android:textColor="@android:color/black"
+            android:layout_margin="10dp"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textAlignment="center"/>
+    </LinearLayout>
+
+</RelativeLayout>

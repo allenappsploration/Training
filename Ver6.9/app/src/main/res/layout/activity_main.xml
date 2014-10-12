@@ -1,0 +1,109 @@
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Act as a background and outer container -->
+    <LinearLayout
+        android:layout_width="240dp"
+        android:layout_height="fill_parent"
+        android:id="@+id/naviDrawer"
+        android:layout_gravity="start"
+        android:background="@android:color/white"
+        android:overScrollMode="ifContentScrolls"
+        android:orientation="vertical"
+        android:clickable="true">
+
+        <!-- Container to store items of navigation drawer -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:overScrollMode="ifContentScrolls"
+            android:layout_weight="1"
+            android:scrollbars="none"
+            tools:ignore="NewApi">
+
+            <ImageView
+                android:id="@+id/img_NaviBanner"
+                android:layout_width="fill_parent"
+                android:layout_height="80dp"
+                android:layout_gravity="top"
+                android:background="@drawable/banner"/>
+
+            <!--<TextView-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Home"-->
+                <!--android:textColor="@android:color/black"-->
+                <!--android:layout_margin="10dp"-->
+                <!--android:textSize="25dp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:textAlignment="center"/>-->
+
+            <!--<TextView-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/tv_homePage"-->
+                <!--android:text="Home Page"-->
+                <!--android:textColor="@android:color/black"-->
+                <!--android:background="@drawable/onclick_states"-->
+                <!--android:layout_margin="10dp"-->
+                <!--android:textSize="23dp"-->
+                <!--android:textAlignment="center"-->
+                <!--android:clickable="true"/>-->
+
+            <!--<TextView-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Section"-->
+                <!--android:textColor="@android:color/black"-->
+                <!--android:layout_margin="10dp"-->
+                <!--android:textSize="25dp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:textAlignment="center"/>-->
+
+            <ListView
+                android:id="@+id/left_drawer"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:choiceMode="singleChoice"
+                android:divider="@android:color/darker_gray"
+                android:dividerHeight="0dp"
+                android:scrollbars="none"
+                tools:ignore="NewApi" >
+            </ListView>
+
+            <!--<TextView-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Tutorial"-->
+                <!--android:textColor="@android:color/black"-->
+                <!--android:layout_margin="10dp"-->
+                <!--android:textSize="25dp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:textAlignment="center"/>-->
+
+            <!--<TextView-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/tv_tutorialPage"-->
+                <!--android:text="Tutorial Page"-->
+                <!--android:background="@drawable/onclick_states"-->
+                <!--android:textColor="@android:color/black"-->
+                <!--android:layout_margin="10dp"-->
+                <!--android:textSize="23dp"-->
+                <!--android:textAlignment="center"-->
+                <!--android:clickable="true"/>-->
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.v4.widget.DrawerLayout>
