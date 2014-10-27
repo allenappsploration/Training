@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:id="@+id/ll_content">
+
+        <WebView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/wvEmbeddedBrowser"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/webView"
+            android:background="@android:color/holo_green_dark"
+            android:alpha="0.6"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:textAlignment="center">
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/page_back"
+                android:id="@+id/ib_back"
+                android:background="@android:color/transparent"
+                android:adjustViewBounds="true"
+                android:layout_weight="1"/>
+
+            <View
+                android:layout_width="2px"
+                android:layout_height="@dimen/activity_horizontal_margin"
+                android:background="@android:color/white"/>
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/page_forward"
+                android:background="@android:color/transparent"
+                android:id="@+id/ib_forward"
+                android:adjustViewBounds="true"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.appsplorationdev.publisherapp" >
+
+    <!--working fine from api 14 till api 21-->
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/innity_logo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        android:largeHeap="true">
+        <activity
+            android:name=".Activity_Tutorial"
+            android:label="Publisher App"
+            android:noHistory="true">
+
+        </activity>
+        <activity
+            android:name=".Activity_FirstRunCheck"
+            android:label="Publisher App"
+            android:noHistory="true">
+        </activity>
+        <meta-data android:name="PW_APPID" android:value="B93AD-8FB02" /> <!-- B03BB-9CDF9 -->
+        <meta-data android:name="PW_PROJECT_ID" android:value="A347432982318" /> <!-- A164470468513 -->
+        <activity
+            android:name=".Activity_Main"
+            android:label="Publisher App"
+            android:hardwareAccelerated="false"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+
+        <!-- Splash screen -->
+        <activity
+            android:name=".Activity_SplashScreen"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".Activity_SingleArticle"
+            android:label="Article"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.example.appsplorationdev.publisherapp.MESSAGE"/>         <!-- Push Notification opens activity from url -->
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".Activity_Search"
+            android:label="Search Result">
+        </activity>
+
+        <activity android:name=".Activity_EmbedBrowser"
+            android:label="">
+        </activity>
+        <activity android:name="com.arellomobile.android.push.PushWebview"/>
+
+        <activity android:name="com.arellomobile.android.push.MessageActivity"/>
+
+        <activity android:name="com.arellomobile.android.push.PushHandlerActivity"
+            android:exported="true"/>
+        <!--
+          BroadcastReceiver that will receive intents from GCM
+          services and handle them to the custom IntentService.
+
+          The com.google.android.c2dm.permission.SEND permission is necessary
+          so only GCM services can send data messages for the app.
+        -->
+        <receiver
+            android:name="com.google.android.gcm.GCMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <!-- Receives the actual messages. -->
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <!-- Receives the registration id. -->
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
+                <category android:name="com.example.appsplorationdev.publisherapp"/>
+            </intent-filter>
+        </receiver>
+
+        <!--
+          Application-specific subclass of PushGCMIntentService that will
+          handle received messages.
+        -->
+        <service android:name="com.arellomobile.android.push.PushGCMIntentService"/>
+    </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.BROADCAST_STICKY"/>
+
+    <!-- GCM requires a Google account. -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <!-- Keeps the processor from sleeping when a message is received. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+    <!--
+      Creates a custom permission so only this app can receive its messages.
+
+      NOTE: the permission *must* be called PACKAGE.permission.C2D_MESSAGE,
+            where PACKAGE is the application's package name.
+     -->
+    <permission
+        android:name="com.example.appsplorationdev.publisherapp.permission.C2D_MESSAGE"
+        android:protectionLevel="signature"/>
+    <uses-permission
+        android:name="com.example.appsplorationdev.publisherapp.permission.C2D_MESSAGE"/>
+
+    <!-- This app has permission to register and receive data message. -->
+    <uses-permission
+        android:name="com.google.android.c2dm.permission.RECEIVE"/>
+
+</manifest>

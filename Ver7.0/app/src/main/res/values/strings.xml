@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Publisher App</string>
+    <string name="action_settings">Settings</string>
+    <string name="search">Search</string>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
+
+    <string name="facebook_not_found">Facebook not installed</string>
+    <string name="googlePlus_not_found">Google+ not installed</string>
+    <string name="twitter_not_found">Twitter not installed</string>
+    <string name="whatsapp_not_found">WhatsApp not installed</string>
+    <string name="copied">Copied to clipboard.</string>
+
+
+    <string name="max_zoomOut">Returned to default zoom size</string>
+    <string name="max_zoomIn">Reached maximum zoom size</string>
+
+</resources>
