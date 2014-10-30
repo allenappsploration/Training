@@ -514,7 +514,7 @@ public class MultipleItemsList extends ListActivity implements SurfaceHolder.Cal
                 videoHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
                 videoSurface.getHolder().setFormat(PixelFormat.RGBA_8888);
 
-                String path = "android.resource://com.test.list/"+R.raw.video1;
+                String path = "android.resource://com.example.appsplorationdev.imademo/"+R.raw.video1;
                 try {
 
                     player.setOnCompletionListener(MultipleItemsList.this);
